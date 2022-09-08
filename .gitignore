@@ -31,11 +31,7 @@ vignettes/*.pdf
 # Temporary files created by R markdown
 *.utf8.md
 *.knit.md
-
-# Shiny token, see https://shiny.rstudio.com/articles/shinyapps.html
-rsconnect/
 .Rproj.user
-
-
-##Deleted by JB 
+data/.DS_Store
+scripts/.DS_Store
 .DS_Store
