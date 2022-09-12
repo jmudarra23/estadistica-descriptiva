@@ -1,0 +1,86 @@
+---
+title: "Tarea 1 - Utilizando R como calculadora"
+author: "Jesus Mudarra Luján"
+date: '2022-09-12'
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Pregunta 1
+
+Si hubiéramos empezado a contar segundos a partir de las 12 campanadas que marcan el inicio de 2018, ¿a qué hora de qué día de qué año llegaríamos a los 250 millones de segundos? ¡Cuidado con los años bisiestos!
+
+```{r}
+tiempo.pasado.segundos <- 2.5e+8
+tiempo.pasado.minutos <- tiempo.pasado.segundos/60
+tiempo.pasado.horas <- tiempo.pasado.minutos/60
+tiempo.pasado.dias <- tiempo.pasado.horas/24
+tiempo.pasado.años <- tiempo.pasado.dias/365
+tiempo.pasado.años.exactos <- tiempo.pasado.dias %/% 365
+dias.restantes <- tiempo.pasado.años %% 1 * 365 - 2
+dias.restantes.exactos <- trunc(dias.restantes) # 336 días
+horas.restantes <- dias.restantes %% 1 * 24
+horas.restantes.exactas <- trunc(horas.restantes) # 12 horas
+minutos.restantes <- horas.restantes %% 1 * 60
+minutos.restantes.exactos <- trunc(minutos.restantes) # 26 minutos
+segundos.restantes <- minutos.restantes %% 1 * 60
+segundos.restantes.exactos <- round(segundos.restantes) # 40 segundos
+```
+
+Han pasado `r tiempo.pasado.años.exactos` años, `r dias.restantes.exactos` días, `r horas.restantes.exactas` horas, `r minutos.restantes.exactos` minutos y `r segundos.restantes.exactos` segundos. Lo que nos situaría en el 3 de diciemrbe de 2025 a las 12:26:40.
+
+Resultado contrastado con el obtenido en el siguiente link:
+
+https://bit.ly/3RUgA2x
+
+## Pregunta 2
+
+Crea una función en `R` que resuelva una ecuación de primer grado (de la forma $Ax + B = 0$). Es decir, los parámetros deben ser los coeficientes (en orden) y la función tiene que devolver la solución. Por ejemplo, si la ecuación es $2x + 4 = 0$, la función tendría que devolver -2. Una vez creada la función, utilízala para resolver las siguientes ecuaciones de primer grado:
+
+Función que calcula ecuaciones de primer grado:
+
+```{r}
+ecuacion.primer.grado <- function(a, b, c){
+  paste0("El resultado de la ecuación es x = ", (c-b)/a)
+}
+```
+
+* $5x + 3 = 0$
+
+```{r}
+ecuacion.primer.grado(5, 3, 0)
+```
+
+* $7x + 4 = 18$
+
+```{r}
+ecuacion.primer.grado(7, 4, 18)
+```
+
+* $x + 1 = 1$
+
+```{r}
+ecuacion.primer.grado(1, 1, 1)
+```
+
+## Pregunta 3
+
+Da una expresión para calcular $3e - \pi$ con `R` y a continuación, da el resultado obtenido redondeado a 3 cifras decimales.
+
+```{r}
+round(3*exp(1) - pi, 3)
+```
+
+## Pregunta 4
+
+Da una expresión para calcular el módulo del número complejo $\frac{(2 + 3i)^2}{(5 + 8i)}$ y, a continuación, da el resultado obtenido redondeado a 3 cifras decimales.
+
+```{r}
+result <- round(((2+3i)^2)/(5+8i), 3)
+result
+```
+
+$\frac{(2 + 3i)^2}{(5 + 8i)}$ = `r result`
