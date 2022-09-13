@@ -79,8 +79,8 @@ round(3*exp(1) - pi, 3)
 Da una expresión para calcular el módulo del número complejo $\frac{(2 + 3i)^2}{(5 + 8i)}$ y, a continuación, da el resultado obtenido redondeado a 3 cifras decimales.
 
 ```{r}
-result <- round(((2+3i)^2)/(5+8i), 3)
+result <- round(Mod(((2+3i)^2)/(5+8i)), 3)
 result
 ```
 
-$\frac{(2 + 3i)^2}{(5 + 8i)}$ = `r result`
+Módulo = `r result`
