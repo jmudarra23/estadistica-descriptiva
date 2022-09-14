@@ -2,7 +2,9 @@
 title: "Ejemplo de Markdown"
 author: "Jesus Mudarra Luján"
 date: '2022-09-14'
-output: pdf_document
+output:
+  html_document:
+    df_print: paged
 ---
 
 ```{r setup, include=FALSE}
@@ -33,6 +35,28 @@ Note that the `echo = FALSE` parameter was added to the code chunk to prevent pr
 
 Vamos a calcular $\sqrt{2} - e^{-2}$:
 
-```{r miPrimeraChunk}
+```{r miPrimeraChunk, echo=TRUE, eval=TRUE, results='hold'}
 sqrt(2) - exp(-2)
 ```
+
+```{r magic, message=TRUE, comment=NA, results='markup'}
+library(magic)
+magic(6)
+```
+
+Cuando queremos hacer la raíz cuadrada de dos, podemos hacerlo:
+
+- En \LaTeX: $\sqrt{2}$
+- En `R` haciendo `r sqrt(2)`
+- La frase completa $\sqrt{2}=$ `r sqrt(2)`
+
+El número $\pi$ empieza por `r pi`.
+
+```{r prueba, results='hide', echo=FALSE}
+notas = c(3, 5, 7, 7, 9, 10, 4, 7, 9)
+media = mean(notas)
+n = length(notas)
+desv.tip = sd(notas)
+```
+
+Este año he hecho $n=$ `r n` exámenes, con una media $\overline{x}=$ `r round(media, 2)` y una desviación típica de $s=$ `r round(desv.tip, 2)`.
