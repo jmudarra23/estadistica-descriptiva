@@ -74,7 +74,7 @@ Significado |  Código  |  Resultado
 Fracción | `\frac{a}{b}`    | $\frac{a}{b}$              
 Más menos | `\pm` | $\pm$
 Raíz n-ésima | `\sqrt[n]{x}` | $\sqrt[n]{x}$
-Unión | `cup` | $\cup$                     
+Unión | `\cup` | $\cup$                     
 Intersección | `\cap` | $\cap$  
 OR lógico | `\vee` | $\vee$
 AND lógico | `\wedge` | $\wedge$
