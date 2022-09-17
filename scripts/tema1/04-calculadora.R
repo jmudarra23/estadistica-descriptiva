@@ -232,7 +232,7 @@ Arg(-1 +0i)
 
 Arg(-1 -2i)
 
-# Conjuntado = Re(z) - Im(z)i
+# Conjugado = Re(z) - Im(z)i
 Conj(z1)
 
 # Parte Real y Parte Imaginaria
