@@ -1,0 +1,197 @@
+---
+title: "Tarea 3 - Estructuras de datos"
+author: "Jesus Mudarra Luján"
+date: '2022-09-16'
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Pregunta 1 HECHO
+
+Crea un vector llamado `Harry` formado por la sucesión de números consecutivos entre el -10 y 27. Pídele a `R` que devuelva el elemento de índice 7. Escribe el resultado.
+
+```{r}
+Harry <- seq(from = -10, to = 27)
+Harry
+```
+
+El elemento de índice 7 del vector `Harry` es:
+
+```{r}
+Harry[7]
+```
+
+## Pregunta 2 HECHO
+
+Da el máximo de la sucesión $100\cdot 2^{n} - 7\cdot 3^{n}$ con $n = 0, \dots, 200$.
+
+```{r}
+n = 0:200
+x <- 100*2^n-7*3^n
+```
+
+El máximo de la sucesión es:
+
+```{r}
+max(x)
+```
+
+## Pregunta 3 HECHO
+
+Crea la sucesión de números consecutivos entre 0 y 40. A continuación, crea el vector $3\cdot 5^{n} - 1$ con $n = 0, \dots, 40$. Ponle como nombre `x`. Ahora, da el subvector de los elementos que son estrictamente mayores a 3.5.
+
+```{r}
+n = 0:40
+x <- 3*5^n-1
+```
+
+El subvector que contiene elementos estrictamente mayores a 3.5 es:
+
+```{r}
+x[x>3.5]
+```
+
+## Pregunta 4
+
+Crea una función que devuelva la parte real, la imaginaria, el módulo, el argumento y el conjugado de un número, mostrando solo 2 cifras significativas.
+
+RECOMENDACIÓN: En algún momento hará falta utilizar vectores
+
+
+
+
+## Pregunta 5
+
+Crea una función que resuelva ecuaciones de segundo grado (de la forma $Ax^{2} + Bx + C = 0$). No importa, por ahora, que tengas en cuenta las ecuaciones de segundo grado que no tienen solución real.
+
+RECOMENDACIÓN: En algún momento hará falta utilizar vectores
+
+
+
+
+## Pregunta 6 HECHO
+
+Tomando el vector `vec = c(0,9,98,2,6,7,5,19,88,20,16,0)`, da 3 opciones diferentes para calcular el subvector `c(9,19,20,16)`
+
+Definimos el vector `vec`:
+
+```{r}
+vec = c(0,9,98,2,6,7,5,19,88,20,16,0)
+```
+
+Opción 1:
+
+```{r}
+vec[vec>=9 & vec <=20]
+```
+
+Opción 2:
+
+```{r}
+vec[vec%%2==0 & vec<30 & vec>15 | vec%%2==1 & vec>8]
+```
+
+Opción 3:
+
+```{r}
+vec[vec==9 | vec==19 | vec==20 | vec==16]
+```
+
+Tomando el vector `vec` definido en el apartado anterior, busca
+
+Qué entradas son pares:
+
+```{r}
+vec[vec%%2==0]
+```
+
+Qué entradas no son pares y mayores que 20:
+
+```{r}
+vec[vec%%2 == 1 & vec>20]
+```
+
+NOTA: Ninguna entrada del vector es impar y mayor de 20.
+
+Dónde toma `vec` su valor máximo:
+
+```{r}
+which(vec == max(vec))
+```
+
+Dónde toma `vec` sus valores mínimos:
+
+```{r}
+which(vec == min(vec))
+```
+
+## Pregunta 7 HECHO
+
+Da la entrada (2, 2) de $A\cdot (A+A)\cdot A$, con
+
+$$A = \begin{pmatrix} 1 & 3 \\ 2 & 4 \end{pmatrix}$$
+
+```{r}
+A = matrix(1:4, nrow = 2, byrow = F)
+result = A %*% (A+A) %*% A
+```
+
+La entrada (2, 2) de la matriz A es:
+
+```{r}
+result[2, 2]
+```
+
+## Pregunta 8 HECHO
+
+Da los valores propios de la matriz
+
+$$B = \begin{pmatrix} 2 & 4 & -6 \\ 0 & 0 & 3 \\ 0 & -2 & 5 \end{pmatrix}$$
+
+```{r}
+vector = c(2, 4, -6, 0, 0, 3, 0, -2, 5)
+B = matrix(vector, nrow = 3, byrow = T)
+```
+
+Los valores propios de la matriz B son:
+
+```{r}
+eigen(B)$values
+```
+
+## Pregunta 9 HECHO
+
+Da, redondeando a 3 cifras decimales, los vectores propios de la matriz
+
+$$C = \begin{pmatrix} -48 & 35 & -12 \\ -134 & 95 & -32 \\ -194 & 133 & -44 \end{pmatrix}$$
+
+```{r}
+vector = c(-48, 35, -12, -134, 95, -32, -194, 133, -44)
+C = matrix(vector, nrow = 3, byrow = T)
+```
+
+Los vectores propios de la matriz C son:
+
+```{r}
+round(eigen(B)$vectors, 3)
+```
+
+## Pregunta 10 HECHO
+
+Da el rango de la matriz
+
+$$D = \begin{pmatrix} -2 & -8 & -2 & 3 \\ -3 & -6 & -1 & 2 \\ -9 & -22 & -3 & 7 \\ -18 & -44 & -8 & 15 \end{pmatrix}$$
+
+```{r}
+vector = c(-2, -8, -2, 3, -3, -6, -1, 2, -9, -22, -3, 7, -18, -44, -8, 15)
+D = matrix(vector, nrow = 4, byrow = T)
+```
+
+El rango de la matriz D es:
+
+```{r}
+qr(D)$rank
+```

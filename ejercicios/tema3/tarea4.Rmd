@@ -1,0 +1,152 @@
+---
+title: "Tarea 4 - LaTeX y RMarkdown"
+author: "Jesus Mudarra Luján"
+date: '2022-09-16'
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Pregunta 1
+
+Realiza los siguientes productos de matrices siguiente en `R`:
+
+$$A\cdot B$$
+
+$$B\cdot A$$
+
+$$(A\cdot B)^{t}$$
+
+$$B^{t}\cdot A$$
+
+$$(A\cdot B)^{-1}$$
+
+$$A^{-1}\cdot B^{t}$$
+
+Donde:
+
+$$A = \begin{pmatrix} 1 & 2 & 3 & 4 \\ 4 & 3 & 2 & 1 \\ 0 & 1 & 0 & 2 \\ 3 & 0 & 4 & 0 \end{pmatrix}$$
+
+$$B = \begin{pmatrix} 4 & 3 & 2 & 1 \\ 0 & 3 & 0 & 4 \\ 1 & 2 & 3 & 4 \\ 0 & 1 & 0 & 2 \end{pmatrix}$$
+
+Declaramos las matrices A y B:
+
+```{r}
+vector = c(1, 2, 3, 4, 4, 3, 2, 1, 0, 1, 0, 2, 3, 0, 4, 0)
+A = matrix(vector, nrow = 4, byrow = T)
+```
+
+```{r}
+vector = c(4, 3, 2, 1, 0, 3, 0, 4, 1, 2, 3, 4, 0, 1, 0, 2)
+B = matrix(vector, nrow = 4, byrow = T)
+```
+
+$A\cdot B$
+
+```{r}
+A%*%B
+```
+
+$B\cdot A$
+
+```{r}
+B%*%A
+```
+
+$(A\cdot B)^{t}$
+
+```{r}
+t(A%*%B)
+```
+
+$B^{t}\cdot A$
+
+```{r}
+t(B)%*%A
+```
+
+$(A\cdot B)^{-1}$
+
+```{r}
+solve(A%*%B)
+```
+
+$A^{-1}\cdot B^{t}$
+
+```{r}
+solve(A)%*%t(B)
+```
+
+## Pregunta 2
+
+Considera en un vector los números de tu DNI (puedes inventártelos) y llámalo `dni`. Por ejemplo, si tu DNI es 54201567K, tu vector será
+
+$$dni = (5, 4, 2, 0, 1, 5, 6, 7)$$
+
+Define el vector en `R`. Calcula con `R` el vector `dni` al cuadrado, la raíz cuadrada del vector `dni` y, por último, la suma de todas las cifras del vector `dni`.
+
+Redacta todos tus resultados y utiliza \LaTeX\ cuando pertoque.
+
+Definimos el vector `dni`:
+
+```{r}
+dni = c(5, 4, 2, 0, 1, 5, 6, 7)
+```
+
+Calculamos el vector `dni` al cuadrado:
+
+```{r}
+dni^2
+```
+
+Calculamos la raíz cuadrada del vector `dni`:
+
+```{r}
+sqrt(dni)
+```
+
+Calculamos la suma de todas las cifras del vector `dni`:
+
+```{r}
+sum(dni)
+```
+
+## Pregunta 3
+
+Considera el vector de las letras de tu nombre y apellido. Llámalo `name`. Por ejemplo,
+
+$$name = (M,A,R,I,A,S,A,N,T,O,S)$$
+
+Define dicho vector en `R`. Calcula el subvector que solo contenga tu nombre. Calcula también el subvector que contenga solo tu apellido. Ordénalo alfabéticamente. Crea una matriz con este vector.
+
+Redacta todos tus resultados y utiliza \LaTeX\ cuando pertoque.
+
+```{r}
+name = c("J","E","S","U","S","M","U","D","A","R","R","A")
+```
+
+Subvector nombre:
+
+```{r}
+name[(1:5)]
+```
+
+Subvector apellido:
+
+```{r}
+name[-(1:5)]
+```
+
+Ordenamos el vector alfabéticamente:
+
+```{r}
+sort(name)
+```
+
+Creamos una matriz a partir del vector:
+
+```{r}
+matrix(name, nrow = 3, byrow = T)
+```
