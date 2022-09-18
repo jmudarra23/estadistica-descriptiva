@@ -1,0 +1,107 @@
+---
+title: "Tarea 3 - Estructuras de datos"
+author: "Jesus Mudarra Luján"
+date: '2022-09-18'
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Pregunta 1
+
+Con una sola instrucción, dibuja el gráfico de la función $y = x^2 -3x + 30$ entre -15 y 15. De título pon "Una parábola". De etiquetas, en el eje $X$ pon, en formato matemático, $``x"$; y en el eje $Y$, introduce $x^2 -3x +30$, también en formato matemático. Tienes que utilizar la función `curve()`.
+
+```{r}
+f <- function(x){x^2 - 3*x + 30}
+curve(f, from = -15, to = 15, main = "Una parábola",
+      xlab = expression(x), ylab = expression(x^2 - 3*x + 30))
+```
+
+## Pregunta 2
+
+Considerando lo que has obtenido en el ejercicio anterior y siendo $y = f(x) = x^2 - 3x +30$ e $I = [-15, 15]$, si en vez de utilizar la función `curve()`, utilizamos la función `plot()`, ¿es correcta la sentencia `plot(f(I))` para representar la curva `f` en el intervalo `I`? En otras palabras, ¿dan ambas instrucciones la misma gráfica? Obviamente, en la instrucción `plot(f(I))` se han omitido el resto de parámetros requeridos en el ejercicio anterior porque no influyen para nada en la curva. Tanto si la respuesta es afirmativa como negativa, crea la función `f` en `R` y argumenta tu respuesta, considerando todos los parámetros requeridos (título y etiquetas de ambos ejes).
+
+```{r}
+f <- function(x){x^2 - 3*x + 30}
+I = c(-15:15)
+plot(f(I))
+```
+
+No es correcta la secuencia `plot(f(I))` pues los valores en el eje $X$ no se encuentran en el intervalo deseado.
+
+```{r}
+f <- function(x){x^2 - 3*x + 30}
+I = c(-15:15)
+plot(I, f(I), main = "Una parábola", type = "l",
+     xlab = expression(x), ylab = expression(x^2 - 3*x + 30))
+```
+
+Añadiendo como componente $X$ la secuencia $I = [-15, 15]$, así como las etiquetas, título y formato correspondiente, la gráfica si que es la misma que el ejercicio anterior.
+
+## Pregunta 3
+
+Dibuja un gráfico semilogarítmico de la función $y = 5\cdot2^{x}$ entre -1 y 25. Utiliza la función `curve()`. Muestra solo la etiqueta del eje $Y$, que ponga $``5\cdot2^{x}"$ en formato matemático.
+
+```{r}
+curve(5*2^x, from = -1, to = 25, log = "y",
+      xlab = "", ylab = expression(5%.%2^x))
+```
+
+## Pregunta 4
+
+Dibuja el gráfico de la función $y_{1} = 3x$, entre -10 y 20, utilizando  la función `curve()`. Añade la curva $y_{2} = -3x$. El gráfico no debe mostrar ninguna etiqueta. La primera curva debe ser de color azul y la segunda, de color verde. Ponle de título "2 rectas" y de subtítulo "Dos rectas con pendiente opuesta". Añade al gráfico un recuadro (con la esquina superior izquierda en el punto (13, 10)) que indique que la función $3x$ es la azul y la $-3x$, es la verde.
+
+```{r}
+f1 <- function(x){3*x}
+f2 <- function(x){-3*x}
+
+curve(f1, from = -10, to = 20, xlab = "", ylab = "",
+      main = "2 rectas", sub = "Dos rectas con pendiente opuesta", col = "blue")
+curve(f2, col = "green", add = TRUE)
+legend(x = 13, y = 10,
+       col = c("blue", "green"),
+       legend = c(expression(3*x), expression(-3*x)),
+       lwd = 1,
+       bty = "l", bg = "white")
+```
+
+## Pregunta 5
+
+Da la instrucción que añada al gráfico anterior la recta horizontal $y = 0$ de color rojo con un grosor de 5 puntos.
+
+```{r}
+f1 <- function(x){3*x}
+f2 <- function(x){-3*x}
+
+curve(f1, from = -10, to = 20, xlab = "", ylab = "",
+      main = "2 rectas", sub = "Dos rectas con pendiente opuesta", col = "blue")
+curve(f2, col = "green", add = TRUE)
+abline(h = 0, col = "red", lwd = 5)
+legend(x = 13, y = 10,
+       col = c("blue", "green"),
+       legend = c(expression(3*x), expression(-3*x)),
+       lwd = 1,
+       bty = "l", bg = "white")
+```
+
+## Pregunta 6
+
+Da la instrucción que añada al gráfico anterior la recta $y = 2x + 7$ de color azul con un grosor de 2 puntos.
+
+```{r}
+f1 <- function(x){3*x}
+f2 <- function(x){-3*x}
+
+curve(f1, from = -10, to = 20, xlab = "", ylab = "",
+      main = "2 rectas", sub = "Dos rectas con pendiente opuesta", col = "blue")
+curve(f2, col = "green", add = TRUE)
+abline(h = 0, col = "red", lwd = 5)
+abline(a = 7, b = 2, col = "blue", lwd = 2)
+legend(x = 13, y = 10,
+       col = c("blue", "green"),
+       legend = c(expression(3*x), expression(-3*x)),
+       lwd = 1,
+       bty = "l", bg = "white")
+```
