@@ -9,7 +9,7 @@ Se ha utilizado `R 4.2.1 Patched`, y que se puede descargar en el siguiente [lin
 Instalación entorno virtual con Anaconda:
 
 ```bash
-conda create -n r-basic python=3.9
+conda create -n r-basic python=3.7
 ```
 
 ```bash
