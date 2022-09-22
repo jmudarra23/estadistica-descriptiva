@@ -1,0 +1,105 @@
+---
+title: "Tarea 8 - Manejando Data Frames con R"
+author: "Jesus Mudarra Luján"
+date: '2022-09-23'
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(dplyr)
+```
+
+Carga en `R` el CSV de la web http://winterolympicsmedals.com/medals.csv y responde a las siguientes preguntas.
+
+```{r}
+df <- read.csv("http://winterolympicsmedals.com/medals.csv",
+               header = TRUE,
+               stringsAsFactors = TRUE,
+               dec = ".",
+               sep = ",")
+```
+
+## Pregunta 1
+
+¿Cuántos deportistas aparecen en el data frame?
+```{r}
+nrow(df)
+```
+
+Aparecen 2311 deportistas aparecen en el data frame.
+
+## Pregunta 2
+
+¿Cuántos deportistas han ganado medallas de oro? ¿Cuántos han ganado medallas de plata? ¿Y cuántos de bronce?
+
+```{r}
+nrow(subset(df, Medal=="Gold"))
+```
+
+Hay 774 deportistas que han ganado medallas de oro.
+
+```{r}
+nrow(subset(df, Medal=="Silver"))
+```
+
+Hay 773 deportistas que han ganado medallas de plata.
+
+```{r}
+nrow(subset(df, Medal=="Bronze"))
+```
+
+Hay 764 deportistas que han ganado medallas de bronce.
+
+## Pregunta 3
+
+¿En cuántos lugares se han hecho olimpiadas de invierno?
+
+```{r}
+n_distinct(df$City)
+```
+
+Se han hecho olimpiadas de invierno en 17 ciudades distintas.
+
+## Pregunta 4
+
+¿Cuántos hombres y cuántas mujeres hay?
+
+```{r}
+nrow(subset(df, Event.gender=="M"))
+```
+
+Hay 1386 hombres.
+
+```{r}
+nrow(subset(df, Event.gender=="W"))
+```
+
+Hay 802 mujeres.
+
+## Pregunta 5
+
+¿En qué año participaron más deportistas?
+
+```{r}
+# utilizando librería dplyr
+df %>%
+  count(Year) %>%
+  slice(which.max(n))
+```
+
+El año que más se participó fue 2006 con 252 deportistas.
+
+## Pregunta 6
+
+El campo `NOC` indica el país del ganador de la medalla. ¿Qué país puede presumir de haber ganado más medallas de oro en los juegos de invierno entre 1960 y 1996?
+
+```{r}
+# utilizando librería dplyr
+df %>%
+  filter(Year >= 1960 & Year <= 1996, Medal == "Gold") %>%
+  count(NOC) %>%
+  slice(which.max(n))
+```
+
+El país que más medallas de oro ha obtenido en invierno entre 1960 y 1996 fue la URS con 71 medallas.

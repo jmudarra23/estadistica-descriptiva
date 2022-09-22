@@ -1,5 +1,5 @@
 ---
-title: "Tarea 3 - Estructuras de datos"
+title: "Tarea 6 - Estructuras de datos"
 author: "Jesus Mudarra Luján"
 date: '2022-09-18'
 output: pdf_document
