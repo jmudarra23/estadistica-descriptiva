@@ -1,0 +1,129 @@
+---
+title: "Tarea 10 - Estudio de Bebés Recién Nacidos"
+author: "Jesus Mudarra Luján"
+date: '2022-09-24'
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Instala y carga el paquete `MASS` en `R`. En él hay una tabla de datos llamada `birthwt` sobre factores que pueden incidir en el peso de los niños al nacer.
+
+```{r}
+library(MASS)
+```
+
+## Pregunta 1
+
+Utiliza `str()` y `head()` para explorar la estructura, y con `help()`, mirar el significado de cada variable.
+
+```{r}
+str(birthwt)
+```
+
+```{r}
+head(birthwt)
+```
+
+```{r, eval=FALSE}
+help(birthwt)
+```
+
+Variables del dataset `birthwt`:
+
+- low: indicador de peso al nacer inferior a 2,5 kg.
+
+- age: edad de la madre en años.
+
+- lwt: peso de la madre en libras en la última menstruación.
+
+- race: raza de la madre (1 = blanca, 2 = negra, 3 = otra).
+
+- smoke: condición de fumadora durante el embarazo.
+
+- ptl: número de partos prematuros anteriores.
+
+- ht: antecedentes de hipertensión.
+
+- ui: presencia de irritabilidad uterina.
+
+- ftv: número de visitas al médico durante el primer trimestre.
+
+- bwt: peso al nacer en gramos.
+
+## Pregunta 2
+
+Calcula una tabla de frecuencias relativas marginales de los pares raza de la madre y peso inferior a 2.5 kg o no, que permita ver si la raza de la madre influye en el peso del bebé.
+
+```{r}
+x <- table(birthwt$race, birthwt$low)
+prop.table(x, margin = 1)
+```
+
+## Pregunta 3
+
+Dibuja un diagrama de mosaico de la tabla del ejercicio anterior.
+
+
+
+
+
+
+
+
+## Pregunta 4
+
+Dibuja un diagrama bidimensional de barras, con las barras organizadas en bloques, que permita visualizar la información de los ejercicios anteriores. Aprovecha para poner nombres adecuados a los bloques, colores a las barras y añadir una leyenda que explique qué representa cada barra.
+
+
+
+
+
+
+
+
+## Pregunta 5
+
+¿Se puede obtener alguna conclusión de la tabla y el diagrama de barras anterior? Argumenta tu respuesta.
+
+
+
+
+
+
+
+## Pregunta 6
+
+Repite los cuatro ejercicios anteriores para los pares madre fumadora o no, peso inferior a 2.5 kg o no y para los pares madre hipertensa o no y peso inferior a 2.5 kg o no.
+
+
+
+
+
+
+
+## Pregunta 7
+
+Calcula una tabla de frecuencias relativas marginales de la terna raza de la madre, madre fumadora o no y peso inferior a 2.5 kg o no, que permita ver si la raza de la madre y su condición de fumadora o no fumadora influyen en el peso del bebé.
+
+
+
+
+
+
+
+## Pregunta 8
+
+Dibuja un diagrama de mosaico de la tabla del ejercicio anterior.
+
+
+
+
+
+
+
+
+
+

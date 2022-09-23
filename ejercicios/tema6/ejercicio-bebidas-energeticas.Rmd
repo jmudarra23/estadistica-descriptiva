@@ -1,0 +1,50 @@
+---
+title: "Ejercicio bebidas energéticas"
+author: "Jesus Mudarra Luján"
+date: '2022-09-24'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+Beb_Energ = read.table("../../data/EnergyDrink", header = TRUE)
+```
+
+```{r}
+str(Beb_Energ)
+```
+
+```{r}
+head(Beb_Energ, 4)
+```
+
+```{r}
+summary(Beb_Energ)
+```
+
+```{r}
+apply(Beb_Energ, MARGIN = 2, FUN = table)
+```
+
+```{r}
+apply(Beb_Energ, MARGIN = 2, FUN = table)$sexo
+```
+
+```{r}
+table(Beb_Energ$sexo)
+```
+
+```{r}
+table(Beb_Energ)
+```
+
+```{r}
+table(Beb_Energ[c(1, 3)])
+```
+
+```{r}
+ftable(Beb_Energ)
+```

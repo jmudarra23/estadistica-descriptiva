@@ -11,9 +11,9 @@
 
 <meta name="author" content="Jesus Mudarra Luján" />
 
-<meta name="date" content="2022-09-20" />
+<meta name="date" content="2022-09-23" />
 
-<title>Carga de DF</title>
+<title>Conjunto de Datos HairEyeColor</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -363,193 +363,577 @@ pre code {
 
 
 
-<h1 class="title toc-ignore">Carga de DF</h1>
+<h1 class="title toc-ignore">Conjunto de Datos HairEyeColor</h1>
 <h4 class="author">Jesus Mudarra Luján</h4>
-<h4 class="date">2022-09-20</h4>
+<h4 class="date">2022-09-23</h4>
 
 </div>
 
 
-<div id="carga-de-ficheros-local" class="section level2">
-<h2>Carga de ficheros local</h2>
-<pre class="r"><code>df = read.table(&quot;../../data/bulls.dat&quot;, header = FALSE,
-                col.names = c(&quot;breed&quot;, &quot;sale_price&quot;, &quot;shoulder&quot;,
-                          &quot;fat_free&quot;, &quot;percent_ff&quot;, &quot;frame_scale&quot;,
-                          &quot;back_fat&quot;, &quot;sale_height&quot;, &quot;sale_weight&quot;),
-                sep = &quot;&quot;, dec = &quot;.&quot;)
-head(df)</code></pre>
-<pre><code>##   breed sale_price shoulder fat_free percent_ff frame_scale back_fat
-## 1     1       2200     51.0     1128       70.9           7     0.25
-## 2     1       2250     51.9     1108       72.1           7     0.25
-## 3     1       1625     49.9     1011       71.6           6     0.15
-## 4     1       4600     53.1      993       68.9           8     0.35
-## 5     1       2150     51.2      996       68.6           7     0.25
-## 6     1       1225     49.2      985       71.4           6     0.15
-##   sale_height sale_weight
-## 1        54.8        1720
-## 2        55.3        1575
-## 3        53.1        1410
-## 4        56.4        1595
-## 5        55.0        1488
-## 6        51.4        1500</code></pre>
-</div>
-<div id="carga-desde-url" class="section level2">
-<h2>Carga desde URL</h2>
-<pre class="r"><code># ya no funciona la url así que pruebo con otra
-#df2 = read.table(&quot;https://maitra.public.iastate.edu/stat501/datasets/bulls.dat&quot;)
-df2 = read.table(&quot;http://winterolympicsmedals.com/medals.csv&quot;, header = TRUE,
-                 sep = &quot;,&quot;)
-head(df2)</code></pre>
-<pre><code>##   Year     City      Sport     Discipline NOC           Event Event.gender
-## 1 1924 Chamonix    Skating Figure skating AUT      individual            M
-## 2 1924 Chamonix    Skating Figure skating AUT      individual            W
-## 3 1924 Chamonix    Skating Figure skating AUT           pairs            X
-## 4 1924 Chamonix  Bobsleigh      Bobsleigh BEL        four-man            M
-## 5 1924 Chamonix Ice Hockey     Ice Hockey CAN      ice hockey            M
-## 6 1924 Chamonix   Biathlon       Biathlon FIN military patrol            M
-##    Medal
-## 1 Silver
-## 2   Gold
-## 3   Gold
-## 4 Bronze
-## 5   Gold
-## 6 Silver</code></pre>
-<pre class="r"><code>str(df2)</code></pre>
-<pre><code>## &#39;data.frame&#39;:    2275 obs. of  8 variables:
-##  $ Year        : int  1924 1924 1924 1924 1924 1924 1924 1924 1924 1924 ...
-##  $ City        : chr  &quot;Chamonix&quot; &quot;Chamonix&quot; &quot;Chamonix&quot; &quot;Chamonix&quot; ...
-##  $ Sport       : chr  &quot;Skating&quot; &quot;Skating&quot; &quot;Skating&quot; &quot;Bobsleigh&quot; ...
-##  $ Discipline  : chr  &quot;Figure skating&quot; &quot;Figure skating&quot; &quot;Figure skating&quot; &quot;Bobsleigh&quot; ...
-##  $ NOC         : chr  &quot;AUT&quot; &quot;AUT&quot; &quot;AUT&quot; &quot;BEL&quot; ...
-##  $ Event       : chr  &quot;individual&quot; &quot;individual&quot; &quot;pairs&quot; &quot;four-man&quot; ...
-##  $ Event.gender: chr  &quot;M&quot; &quot;W&quot; &quot;X&quot; &quot;M&quot; ...
-##  $ Medal       : chr  &quot;Silver&quot; &quot;Gold&quot; &quot;Gold&quot; &quot;Bronze&quot; ...</code></pre>
-<pre class="r"><code>df3 &lt;- read.table(&quot;../../data/olive.txt&quot;)
-str(df3)</code></pre>
-<pre><code>## &#39;data.frame&#39;:    572 obs. of  9 variables:
-##  $ group.id: int  1 1 1 1 1 1 1 1 1 1 ...
-##  $ X1      : int  1075 1088 911 966 1051 911 922 1100 1082 1037 ...
-##  $ X2      : int  75 73 54 57 67 49 66 61 60 55 ...
-##  $ X3      : int  226 224 246 240 259 268 264 235 239 213 ...
-##  $ X4      : int  7823 7709 8113 7952 7771 7924 7990 7728 7745 7944 ...
-##  $ X5      : int  672 781 549 619 672 678 618 734 709 633 ...
-##  $ X6      : int  36 31 31 50 50 51 49 39 46 26 ...
-##  $ X7      : int  60 61 63 78 80 70 56 64 83 52 ...
-##  $ X8      : int  29 29 29 35 46 44 29 35 33 30 ...</code></pre>
-<pre class="r"><code>write.table(df3, file = &quot;../../data/olive2.txt&quot;, dec = &quot;.&quot;)
-df4 = read.table(&quot;../../data/olive2.txt&quot;)
-head(df4)</code></pre>
-<pre><code>##   group.id   X1 X2  X3   X4  X5 X6 X7 X8
-## 1        1 1075 75 226 7823 672 36 60 29
-## 2        1 1088 73 224 7709 781 31 61 29
-## 3        1  911 54 246 8113 549 31 63 29
-## 4        1  966 57 240 7952 619 50 78 35
-## 5        1 1051 67 259 7771 672 50 80 46
-## 6        1  911 49 268 7924 678 51 70 44</code></pre>
-</div>
-<div id="crear-un-df" class="section level1">
-<h1>Crear un DF</h1>
-<pre class="r"><code>gender = c(&quot;H&quot;, &quot;M&quot;, &quot;M&quot;, &quot;M&quot;, &quot;H&quot;)
-age = c(23, 45, 20, 30, 18)
-family = c(2, 3, 4, 2, 5)
-df5 = data.frame(genero = gender, edad = age, familia = family, stringsAsFactors = TRUE)
-row.names(df5) = c(&quot;P1&quot;, &quot;P2&quot;, &quot;P3&quot;, &quot;P4&quot;, &quot;P5&quot;)
-df5</code></pre>
-<pre><code>##    genero edad familia
-## P1      H   23       2
-## P2      M   45       3
-## P3      M   20       4
-## P4      M   30       2
-## P5      H   18       5</code></pre>
-<pre class="r"><code>str(df5)</code></pre>
-<pre><code>## &#39;data.frame&#39;:    5 obs. of  3 variables:
-##  $ genero : Factor w/ 2 levels &quot;H&quot;,&quot;M&quot;: 1 2 2 2 1
-##  $ edad   : num  23 45 20 30 18
-##  $ familia: num  2 3 4 2 5</code></pre>
-<pre class="r"><code>dimnames(df5) = list(
-  c(&quot;Antonio&quot;, &quot;Ricardo&quot;, &quot;JuanGabriel&quot;, &quot;María&quot;, &quot;Margarita&quot;),
-  c(&quot;Sexo&quot;, &quot;Años&quot;, &quot;MiembrosFamilia&quot;)
-)
-df5</code></pre>
-<pre><code>##             Sexo Años MiembrosFamilia
-## Antonio        H   23               2
-## Ricardo        M   45               3
-## JuanGabriel    M   20               4
-## María          M   30               2
-## Margarita      H   18               5</code></pre>
-<pre class="r"><code>df5 &lt;- rbind(df5, c(&quot;H&quot;, 30, 1))
-df5</code></pre>
-<pre><code>##             Sexo Años MiembrosFamilia
-## Antonio        H   23               2
-## Ricardo        M   45               3
-## JuanGabriel    M   20               4
-## María          M   30               2
-## Margarita      H   18               5
-## 6              H   30               1</code></pre>
-<pre class="r"><code>df5$Sexo = as.character(df5$Sexo)
-df5$Ingresos = c(10000, 12000, 15000, 12000, 20000, 10000)</code></pre>
-<pre class="r"><code>gender = c(&quot;H&quot;, &quot;M&quot;, &quot;M&quot;, &quot;M&quot;, &quot;H&quot;)
-age = c(23, 45, 20, 30, 18)
-family = c(2, 3, 4, 2, 5)
-df5 = data.frame(genero = gender, edad = age, familia = family, stringsAsFactors = TRUE)
-df5[df5$genero==&quot;M&quot;, ] -&gt; df_m
-str(df_m)</code></pre>
-<pre><code>## &#39;data.frame&#39;:    3 obs. of  3 variables:
-##  $ genero : Factor w/ 2 levels &quot;H&quot;,&quot;M&quot;: 2 2 2
-##  $ edad   : num  45 20 30
-##  $ familia: num  3 4 2</code></pre>
-<pre class="r"><code>df_m = droplevels(df_m) # borrar niveles sobrantes de todos los factores
-str(df_m)</code></pre>
-<pre><code>## &#39;data.frame&#39;:    3 obs. of  3 variables:
-##  $ genero : Factor w/ 1 level &quot;M&quot;: 1 1 1
-##  $ edad   : num  45 20 30
-##  $ familia: num  3 4 2</code></pre>
-<div id="tidyverse" class="section level2">
-<h2>Tidyverse</h2>
-<pre class="r"><code>library(tidyverse)</code></pre>
-<pre><code>## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──
-## ✔ ggplot2 3.3.6      ✔ purrr   0.3.4 
-## ✔ tibble  3.1.8      ✔ dplyr   1.0.10
-## ✔ tidyr   1.2.1      ✔ stringr 1.4.1 
-## ✔ readr   2.1.2      ✔ forcats 0.5.2 
-## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-## ✖ dplyr::filter() masks stats::filter()
-## ✖ dplyr::lag()    masks stats::lag()</code></pre>
-<pre class="r"><code>iris_petal = select(iris, starts_with(&quot;Petal&quot;))
-head(iris_petal)</code></pre>
-<pre><code>##   Petal.Length Petal.Width
-## 1          1.4         0.2
-## 2          1.4         0.2
-## 3          1.3         0.2
-## 4          1.5         0.2
-## 5          1.4         0.2
-## 6          1.7         0.4</code></pre>
-<pre class="r"><code>iris_length = select(iris, ends_with(&quot;Length&quot;))
-head(iris_length)</code></pre>
-<pre><code>##   Sepal.Length Petal.Length
-## 1          5.1          1.4
-## 2          4.9          1.4
-## 3          4.7          1.3
-## 4          4.6          1.5
-## 5          5.0          1.4
-## 6          5.4          1.7</code></pre>
-</div>
-<div id="subset" class="section level2">
-<h2>Subset</h2>
-<pre class="r"><code>setosa &lt;- subset(iris, Species==&quot;versicolor&quot;, select = c(1, 3)) -&gt; versicolor
-rownames(versicolor) = 1:nrow(versicolor)
-head(versicolor, 5)</code></pre>
-<pre><code>##   Sepal.Length Petal.Length
-## 1          7.0          4.7
-## 2          6.4          4.5
-## 3          6.9          4.9
-## 4          5.5          4.0
-## 5          6.5          4.6</code></pre>
-<pre class="r"><code>str(versicolor)</code></pre>
-<pre><code>## &#39;data.frame&#39;:    50 obs. of  2 variables:
-##  $ Sepal.Length: num  7 6.4 6.9 5.5 6.5 5.7 6.3 4.9 6.6 5.2 ...
-##  $ Petal.Length: num  4.7 4.5 4.9 4 4.6 4.5 4.7 3.3 4.6 3.9 ...</code></pre>
-</div>
+<div id="ejemplo-de-color-de-ojos-y-pelo" class="section level2">
+<h2>Ejemplo de color de ojos y pelo</h2>
+<pre class="r"><code>HairEyeColor</code></pre>
+<pre><code>## , , Sex = Male
+## 
+##        Eye
+## Hair    Brown Blue Hazel Green
+##   Black    32   11    10     3
+##   Brown    53   50    25    15
+##   Red      10   10     7     7
+##   Blond     3   30     5     8
+## 
+## , , Sex = Female
+## 
+##        Eye
+## Hair    Brown Blue Hazel Green
+##   Black    36    9     5     2
+##   Brown    66   34    29    14
+##   Red      16    7     7     7
+##   Blond     4   64     5     8</code></pre>
+<pre class="r"><code>sum(HairEyeColor) -&gt; total</code></pre>
+<p>El total de individuos de la tabla de datos es 592.</p>
+<pre class="r"><code>prop.table(HairEyeColor, margin = 3)</code></pre>
+<pre><code>## , , Sex = Male
+## 
+##        Eye
+## Hair          Brown        Blue       Hazel       Green
+##   Black 0.114695341 0.039426523 0.035842294 0.010752688
+##   Brown 0.189964158 0.179211470 0.089605735 0.053763441
+##   Red   0.035842294 0.035842294 0.025089606 0.025089606
+##   Blond 0.010752688 0.107526882 0.017921147 0.028673835
+## 
+## , , Sex = Female
+## 
+##        Eye
+## Hair          Brown        Blue       Hazel       Green
+##   Black 0.115015974 0.028753994 0.015974441 0.006389776
+##   Brown 0.210862620 0.108626198 0.092651757 0.044728435
+##   Red   0.051118211 0.022364217 0.022364217 0.022364217
+##   Blond 0.012779553 0.204472843 0.015974441 0.025559105</code></pre>
+<pre class="r"><code>prop.table(HairEyeColor, margin = c(1, 2))</code></pre>
+<pre><code>## , , Sex = Male
+## 
+##        Eye
+## Hair        Brown      Blue     Hazel     Green
+##   Black 0.4705882 0.5500000 0.6666667 0.6000000
+##   Brown 0.4453782 0.5952381 0.4629630 0.5172414
+##   Red   0.3846154 0.5882353 0.5000000 0.5000000
+##   Blond 0.4285714 0.3191489 0.5000000 0.5000000
+## 
+## , , Sex = Female
+## 
+##        Eye
+## Hair        Brown      Blue     Hazel     Green
+##   Black 0.5294118 0.4500000 0.3333333 0.4000000
+##   Brown 0.5546218 0.4047619 0.5370370 0.4827586
+##   Red   0.6153846 0.4117647 0.5000000 0.5000000
+##   Blond 0.5714286 0.6808511 0.5000000 0.5000000</code></pre>
+<pre class="r"><code>aperm(HairEyeColor, perm = c(&quot;Sex&quot;, &quot;Hair&quot;, &quot;Eye&quot;))</code></pre>
+<pre><code>## , , Eye = Brown
+## 
+##         Hair
+## Sex      Black Brown Red Blond
+##   Male      32    53  10     3
+##   Female    36    66  16     4
+## 
+## , , Eye = Blue
+## 
+##         Hair
+## Sex      Black Brown Red Blond
+##   Male      11    50  10    30
+##   Female     9    34   7    64
+## 
+## , , Eye = Hazel
+## 
+##         Hair
+## Sex      Black Brown Red Blond
+##   Male      10    25   7     5
+##   Female     5    29   7     5
+## 
+## , , Eye = Green
+## 
+##         Hair
+## Sex      Black Brown Red Blond
+##   Male       3    15   7     8
+##   Female     2    14   7     8</code></pre>
+<pre class="r"><code>library(kableExtra)</code></pre>
+<pre><code>## Warning in !is.null(rmarkdown::metadata$output) &amp;&amp; rmarkdown::metadata$output
+## %in% : &#39;length(x) = 2 &gt; 1&#39; in coercion to &#39;logical(1)&#39;</code></pre>
+<pre class="r"><code>kable(HairEyeColor)</code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+Hair
+</th>
+<th style="text-align:left;">
+Eye
+</th>
+<th style="text-align:left;">
+Sex
+</th>
+<th style="text-align:right;">
+Freq
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Black
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+32
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+53
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Red
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+10
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Blond
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Black
+</td>
+<td style="text-align:left;">
+Blue
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+11
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:left;">
+Blue
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+50
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Red
+</td>
+<td style="text-align:left;">
+Blue
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+10
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Blond
+</td>
+<td style="text-align:left;">
+Blue
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+30
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Black
+</td>
+<td style="text-align:left;">
+Hazel
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+10
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:left;">
+Hazel
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+25
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Red
+</td>
+<td style="text-align:left;">
+Hazel
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Blond
+</td>
+<td style="text-align:left;">
+Hazel
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Black
+</td>
+<td style="text-align:left;">
+Green
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:left;">
+Green
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+15
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Red
+</td>
+<td style="text-align:left;">
+Green
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Blond
+</td>
+<td style="text-align:left;">
+Green
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Black
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+36
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+66
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Red
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Blond
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Black
+</td>
+<td style="text-align:left;">
+Blue
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:left;">
+Blue
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+34
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Red
+</td>
+<td style="text-align:left;">
+Blue
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Blond
+</td>
+<td style="text-align:left;">
+Blue
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Black
+</td>
+<td style="text-align:left;">
+Hazel
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:left;">
+Hazel
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+29
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Red
+</td>
+<td style="text-align:left;">
+Hazel
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Blond
+</td>
+<td style="text-align:left;">
+Hazel
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Black
+</td>
+<td style="text-align:left;">
+Green
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:left;">
+Green
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+14
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Red
+</td>
+<td style="text-align:left;">
+Green
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Blond
+</td>
+<td style="text-align:left;">
+Green
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+</tbody>
+</table>
+<pre class="r"><code>library(xtable)
+sex = factor(c(&quot;H&quot;, &quot;M&quot;, &quot;M&quot;, &quot;M&quot;, &quot;H&quot;, &quot;H&quot;, &quot;M&quot;, &quot;M&quot;))
+ans = factor(c(&quot;S&quot;, &quot;N&quot;, &quot;S&quot;, &quot;S&quot;, &quot;S&quot;, &quot;N&quot;, &quot;N&quot;, &quot;S&quot;))
+xtable(table(sex, ans)) # necesario incluir en el chunk results=&#39;asis&#39; y Knit en PDF</code></pre>
+% latex table generated in R 4.2.1 by xtable 1.8-4 package % Sat Sep 24
+00:24:17 2022
 </div>
 
 

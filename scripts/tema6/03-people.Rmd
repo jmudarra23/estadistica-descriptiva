@@ -1,0 +1,43 @@
+---
+title: "Conjunto de Datos HairEyeColor"
+author: "Jesus Mudarra Luján"
+date: '2022-09-23'
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Ejemplo de color de ojos y pelo
+
+```{r}
+HairEyeColor
+
+sum(HairEyeColor) -> total
+```
+
+El total de individuos de la tabla de datos es `r total`.
+
+```{r}
+prop.table(HairEyeColor, margin = 3)
+prop.table(HairEyeColor, margin = c(1, 2))
+```
+
+```{r}
+aperm(HairEyeColor, perm = c("Sex", "Hair", "Eye"))
+```
+
+```{r}
+library(kableExtra)
+kable(HairEyeColor)
+```
+
+```{r, results='asis'}
+library(xtable)
+sex = factor(c("H", "M", "M", "M", "H", "H", "M", "M"))
+ans = factor(c("S", "N", "S", "S", "S", "N", "N", "S"))
+xtable(table(sex, ans)) # necesario incluir en el chunk results='asis' y Knit en PDF
+```
