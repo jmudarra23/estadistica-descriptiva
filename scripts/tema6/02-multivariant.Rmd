@@ -20,7 +20,6 @@ place = sample(c("San Francisco", "Barcelona", "Valencia", "Cobija", "Asturias")
 table(sex, ans, place)
 ftable(sex, ans, place) # flat table
 ftable(sex, ans, place, col.vars = c("sex", "ans"))
-
 ```
 
 ### Filtrar las tablas

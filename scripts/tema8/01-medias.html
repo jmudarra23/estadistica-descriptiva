@@ -11,9 +11,9 @@
 
 <meta name="author" content="Jesus Mudarra Luján" />
 
-<meta name="date" content="2022-09-23" />
+<meta name="date" content="2022-09-28" />
 
-<title>Conjunto de Datos HairEyeColor</title>
+<title>Medias</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -363,577 +363,57 @@ pre code {
 
 
 
-<h1 class="title toc-ignore">Conjunto de Datos HairEyeColor</h1>
+<h1 class="title toc-ignore">Medias</h1>
 <h4 class="author">Jesus Mudarra Luján</h4>
-<h4 class="date">2022-09-23</h4>
+<h4 class="date">2022-09-28</h4>
 
 </div>
 
 
-<div id="ejemplo-de-color-de-ojos-y-pelo" class="section level2">
-<h2>Ejemplo de color de ojos y pelo</h2>
-<pre class="r"><code>HairEyeColor</code></pre>
-<pre><code>## , , Sex = Male
-## 
-##        Eye
-## Hair    Brown Blue Hazel Green
-##   Black    32   11    10     3
-##   Brown    53   50    25    15
-##   Red      10   10     7     7
-##   Blond     3   30     5     8
-## 
-## , , Sex = Female
-## 
-##        Eye
-## Hair    Brown Blue Hazel Green
-##   Black    36    9     5     2
-##   Brown    66   34    29    14
-##   Red      16    7     7     7
-##   Blond     4   64     5     8</code></pre>
-<pre class="r"><code>sum(HairEyeColor) -&gt; total</code></pre>
-<p>El total de individuos de la tabla de datos es 592.</p>
-<pre class="r"><code>prop.table(HairEyeColor, margin = 3)</code></pre>
-<pre><code>## , , Sex = Male
-## 
-##        Eye
-## Hair          Brown        Blue       Hazel       Green
-##   Black 0.114695341 0.039426523 0.035842294 0.010752688
-##   Brown 0.189964158 0.179211470 0.089605735 0.053763441
-##   Red   0.035842294 0.035842294 0.025089606 0.025089606
-##   Blond 0.010752688 0.107526882 0.017921147 0.028673835
-## 
-## , , Sex = Female
-## 
-##        Eye
-## Hair          Brown        Blue       Hazel       Green
-##   Black 0.115015974 0.028753994 0.015974441 0.006389776
-##   Brown 0.210862620 0.108626198 0.092651757 0.044728435
-##   Red   0.051118211 0.022364217 0.022364217 0.022364217
-##   Blond 0.012779553 0.204472843 0.015974441 0.025559105</code></pre>
-<pre class="r"><code>prop.table(HairEyeColor, margin = c(1, 2))</code></pre>
-<pre><code>## , , Sex = Male
-## 
-##        Eye
-## Hair        Brown      Blue     Hazel     Green
-##   Black 0.4705882 0.5500000 0.6666667 0.6000000
-##   Brown 0.4453782 0.5952381 0.4629630 0.5172414
-##   Red   0.3846154 0.5882353 0.5000000 0.5000000
-##   Blond 0.4285714 0.3191489 0.5000000 0.5000000
-## 
-## , , Sex = Female
-## 
-##        Eye
-## Hair        Brown      Blue     Hazel     Green
-##   Black 0.5294118 0.4500000 0.3333333 0.4000000
-##   Brown 0.5546218 0.4047619 0.5370370 0.4827586
-##   Red   0.6153846 0.4117647 0.5000000 0.5000000
-##   Blond 0.5714286 0.6808511 0.5000000 0.5000000</code></pre>
-<pre class="r"><code>aperm(HairEyeColor, perm = c(&quot;Sex&quot;, &quot;Hair&quot;, &quot;Eye&quot;))</code></pre>
-<pre><code>## , , Eye = Brown
-## 
-##         Hair
-## Sex      Black Brown Red Blond
-##   Male      32    53  10     3
-##   Female    36    66  16     4
-## 
-## , , Eye = Blue
-## 
-##         Hair
-## Sex      Black Brown Red Blond
-##   Male      11    50  10    30
-##   Female     9    34   7    64
-## 
-## , , Eye = Hazel
-## 
-##         Hair
-## Sex      Black Brown Red Blond
-##   Male      10    25   7     5
-##   Female     5    29   7     5
-## 
-## , , Eye = Green
-## 
-##         Hair
-## Sex      Black Brown Red Blond
-##   Male       3    15   7     8
-##   Female     2    14   7     8</code></pre>
-<pre class="r"><code>library(kableExtra)</code></pre>
-<pre><code>## Warning in !is.null(rmarkdown::metadata$output) &amp;&amp; rmarkdown::metadata$output
-## %in% : &#39;length(x) = 2 &gt; 1&#39; in coercion to &#39;logical(1)&#39;</code></pre>
-<pre class="r"><code>kable(HairEyeColor)</code></pre>
-<table>
-<thead>
-<tr>
-<th style="text-align:left;">
-Hair
-</th>
-<th style="text-align:left;">
-Eye
-</th>
-<th style="text-align:left;">
-Sex
-</th>
-<th style="text-align:right;">
-Freq
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-Black
-</td>
-<td style="text-align:left;">
-Brown
-</td>
-<td style="text-align:left;">
-Male
-</td>
-<td style="text-align:right;">
-32
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Brown
-</td>
-<td style="text-align:left;">
-Brown
-</td>
-<td style="text-align:left;">
-Male
-</td>
-<td style="text-align:right;">
-53
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Red
-</td>
-<td style="text-align:left;">
-Brown
-</td>
-<td style="text-align:left;">
-Male
-</td>
-<td style="text-align:right;">
-10
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Blond
-</td>
-<td style="text-align:left;">
-Brown
-</td>
-<td style="text-align:left;">
-Male
-</td>
-<td style="text-align:right;">
-3
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Black
-</td>
-<td style="text-align:left;">
-Blue
-</td>
-<td style="text-align:left;">
-Male
-</td>
-<td style="text-align:right;">
-11
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Brown
-</td>
-<td style="text-align:left;">
-Blue
-</td>
-<td style="text-align:left;">
-Male
-</td>
-<td style="text-align:right;">
-50
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Red
-</td>
-<td style="text-align:left;">
-Blue
-</td>
-<td style="text-align:left;">
-Male
-</td>
-<td style="text-align:right;">
-10
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Blond
-</td>
-<td style="text-align:left;">
-Blue
-</td>
-<td style="text-align:left;">
-Male
-</td>
-<td style="text-align:right;">
-30
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Black
-</td>
-<td style="text-align:left;">
-Hazel
-</td>
-<td style="text-align:left;">
-Male
-</td>
-<td style="text-align:right;">
-10
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Brown
-</td>
-<td style="text-align:left;">
-Hazel
-</td>
-<td style="text-align:left;">
-Male
-</td>
-<td style="text-align:right;">
-25
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Red
-</td>
-<td style="text-align:left;">
-Hazel
-</td>
-<td style="text-align:left;">
-Male
-</td>
-<td style="text-align:right;">
-7
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Blond
-</td>
-<td style="text-align:left;">
-Hazel
-</td>
-<td style="text-align:left;">
-Male
-</td>
-<td style="text-align:right;">
-5
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Black
-</td>
-<td style="text-align:left;">
-Green
-</td>
-<td style="text-align:left;">
-Male
-</td>
-<td style="text-align:right;">
-3
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Brown
-</td>
-<td style="text-align:left;">
-Green
-</td>
-<td style="text-align:left;">
-Male
-</td>
-<td style="text-align:right;">
-15
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Red
-</td>
-<td style="text-align:left;">
-Green
-</td>
-<td style="text-align:left;">
-Male
-</td>
-<td style="text-align:right;">
-7
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Blond
-</td>
-<td style="text-align:left;">
-Green
-</td>
-<td style="text-align:left;">
-Male
-</td>
-<td style="text-align:right;">
-8
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Black
-</td>
-<td style="text-align:left;">
-Brown
-</td>
-<td style="text-align:left;">
-Female
-</td>
-<td style="text-align:right;">
-36
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Brown
-</td>
-<td style="text-align:left;">
-Brown
-</td>
-<td style="text-align:left;">
-Female
-</td>
-<td style="text-align:right;">
-66
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Red
-</td>
-<td style="text-align:left;">
-Brown
-</td>
-<td style="text-align:left;">
-Female
-</td>
-<td style="text-align:right;">
-16
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Blond
-</td>
-<td style="text-align:left;">
-Brown
-</td>
-<td style="text-align:left;">
-Female
-</td>
-<td style="text-align:right;">
-4
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Black
-</td>
-<td style="text-align:left;">
-Blue
-</td>
-<td style="text-align:left;">
-Female
-</td>
-<td style="text-align:right;">
-9
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Brown
-</td>
-<td style="text-align:left;">
-Blue
-</td>
-<td style="text-align:left;">
-Female
-</td>
-<td style="text-align:right;">
-34
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Red
-</td>
-<td style="text-align:left;">
-Blue
-</td>
-<td style="text-align:left;">
-Female
-</td>
-<td style="text-align:right;">
-7
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Blond
-</td>
-<td style="text-align:left;">
-Blue
-</td>
-<td style="text-align:left;">
-Female
-</td>
-<td style="text-align:right;">
-64
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Black
-</td>
-<td style="text-align:left;">
-Hazel
-</td>
-<td style="text-align:left;">
-Female
-</td>
-<td style="text-align:right;">
-5
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Brown
-</td>
-<td style="text-align:left;">
-Hazel
-</td>
-<td style="text-align:left;">
-Female
-</td>
-<td style="text-align:right;">
-29
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Red
-</td>
-<td style="text-align:left;">
-Hazel
-</td>
-<td style="text-align:left;">
-Female
-</td>
-<td style="text-align:right;">
-7
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Blond
-</td>
-<td style="text-align:left;">
-Hazel
-</td>
-<td style="text-align:left;">
-Female
-</td>
-<td style="text-align:right;">
-5
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Black
-</td>
-<td style="text-align:left;">
-Green
-</td>
-<td style="text-align:left;">
-Female
-</td>
-<td style="text-align:right;">
-2
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Brown
-</td>
-<td style="text-align:left;">
-Green
-</td>
-<td style="text-align:left;">
-Female
-</td>
-<td style="text-align:right;">
-14
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Red
-</td>
-<td style="text-align:left;">
-Green
-</td>
-<td style="text-align:left;">
-Female
-</td>
-<td style="text-align:right;">
-7
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Blond
-</td>
-<td style="text-align:left;">
-Green
-</td>
-<td style="text-align:left;">
-Female
-</td>
-<td style="text-align:right;">
-8
-</td>
-</tr>
-</tbody>
-</table>
-<pre class="r"><code>library(xtable)
-sex = factor(c(&quot;H&quot;, &quot;M&quot;, &quot;M&quot;, &quot;M&quot;, &quot;H&quot;, &quot;H&quot;, &quot;M&quot;, &quot;M&quot;))
-ans = factor(c(&quot;S&quot;, &quot;N&quot;, &quot;S&quot;, &quot;S&quot;, &quot;S&quot;, &quot;N&quot;, &quot;N&quot;, &quot;S&quot;))
-xtable(table(sex, ans)) # necesario incluir en el chunk results=&#39;asis&#39; y Knit en PDF</code></pre>
-% latex table generated in R 4.2.1 by xtable 1.8-4 package % Sun Sep 25
-23:26:59 2022
+<div id="medias" class="section level1">
+<h1>Medias</h1>
+<pre class="r"><code>x &lt;- c(32, 45, 67, 43, 28, 17, 48, 95)
+n = length(x)</code></pre>
+<p>Vamos a calcular las medias del vector 32, 45, 67, 43, 28, 17, 48, 95
+que está formado por 8 observaciones.</p>
+<div id="media-aritmética" class="section level2">
+<h2>Media aritmética</h2>
+<p><span class="math display">\[\bar{x} = \frac{1}{n}\sum_{i=1}^n
+x_i\]</span></p>
+<pre class="r"><code>sum(x)/n # mean</code></pre>
+<pre><code>## [1] 46.875</code></pre>
+</div>
+</div>
+<div id="media-aritmética-ponderada" class="section level1">
+<h1>Media aritmética ponderada</h1>
+<p><span class="math display">\[\bar{x}_w = \frac{\sum_{i=1}^nw_i\cdot
+x_i}{\sum_{i=1}^nw_i}\]</span></p>
+<pre class="r"><code>w = c(1, 2, 2, 3, 3, 2, 2, 1)
+sum(w*x)/sum(w)</code></pre>
+<pre><code>## [1] 43.375</code></pre>
+<div id="media-geométrica" class="section level2">
+<h2>Media geométrica</h2>
+<p><span class="math display">\[\bar{x}_G = \left(\prod_{i=1}^n
+x_i\right)^{1/n}\]</span></p>
+<pre class="r"><code>prod(x)^(1/n)</code></pre>
+<pre><code>## [1] 41.62073</code></pre>
+<pre class="r"><code>prod(x^(1/n)) # es lo mismo</code></pre>
+<pre><code>## [1] 41.62073</code></pre>
+</div>
+<div id="media-armónica" class="section level2">
+<h2>Media armónica</h2>
+<p><span class="math display">\[\bar{x}_A =
+\frac{n}{\sum_{i=1}^{n}\frac{1}{x_i}}\]</span></p>
+<pre class="r"><code>n/sum(1/x)</code></pre>
+<pre><code>## [1] 36.77301</code></pre>
+</div>
+<div id="mínimo-y-máximo" class="section level2">
+<h2>Mínimo y máximo</h2>
+<pre class="r"><code>min(x)</code></pre>
+<pre><code>## [1] 17</code></pre>
+<pre class="r"><code>max(x)</code></pre>
+<pre><code>## [1] 95</code></pre>
+</div>
 </div>
 
 

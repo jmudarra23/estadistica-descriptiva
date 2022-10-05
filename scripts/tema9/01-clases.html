@@ -11,9 +11,9 @@
 
 <meta name="author" content="Jesus Mudarra Luján" />
 
-<meta name="date" content="2022-09-23" />
+<meta name="date" content="2022-10-02" />
 
-<title>Conjunto de Datos HairEyeColor</title>
+<title>Clases</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -363,577 +363,326 @@ pre code {
 
 
 
-<h1 class="title toc-ignore">Conjunto de Datos HairEyeColor</h1>
+<h1 class="title toc-ignore">Clases</h1>
 <h4 class="author">Jesus Mudarra Luján</h4>
-<h4 class="date">2022-09-23</h4>
+<h4 class="date">2022-10-02</h4>
 
 </div>
 
 
-<div id="ejemplo-de-color-de-ojos-y-pelo" class="section level2">
-<h2>Ejemplo de color de ojos y pelo</h2>
-<pre class="r"><code>HairEyeColor</code></pre>
-<pre><code>## , , Sex = Male
-## 
-##        Eye
-## Hair    Brown Blue Hazel Green
-##   Black    32   11    10     3
-##   Brown    53   50    25    15
-##   Red      10   10     7     7
-##   Blond     3   30     5     8
-## 
-## , , Sex = Female
-## 
-##        Eye
-## Hair    Brown Blue Hazel Green
-##   Black    36    9     5     2
-##   Brown    66   34    29    14
-##   Red      16    7     7     7
-##   Blond     4   64     5     8</code></pre>
-<pre class="r"><code>sum(HairEyeColor) -&gt; total</code></pre>
-<p>El total de individuos de la tabla de datos es 592.</p>
-<pre class="r"><code>prop.table(HairEyeColor, margin = 3)</code></pre>
-<pre><code>## , , Sex = Male
-## 
-##        Eye
-## Hair          Brown        Blue       Hazel       Green
-##   Black 0.114695341 0.039426523 0.035842294 0.010752688
-##   Brown 0.189964158 0.179211470 0.089605735 0.053763441
-##   Red   0.035842294 0.035842294 0.025089606 0.025089606
-##   Blond 0.010752688 0.107526882 0.017921147 0.028673835
-## 
-## , , Sex = Female
-## 
-##        Eye
-## Hair          Brown        Blue       Hazel       Green
-##   Black 0.115015974 0.028753994 0.015974441 0.006389776
-##   Brown 0.210862620 0.108626198 0.092651757 0.044728435
-##   Red   0.051118211 0.022364217 0.022364217 0.022364217
-##   Blond 0.012779553 0.204472843 0.015974441 0.025559105</code></pre>
-<pre class="r"><code>prop.table(HairEyeColor, margin = c(1, 2))</code></pre>
-<pre><code>## , , Sex = Male
-## 
-##        Eye
-## Hair        Brown      Blue     Hazel     Green
-##   Black 0.4705882 0.5500000 0.6666667 0.6000000
-##   Brown 0.4453782 0.5952381 0.4629630 0.5172414
-##   Red   0.3846154 0.5882353 0.5000000 0.5000000
-##   Blond 0.4285714 0.3191489 0.5000000 0.5000000
-## 
-## , , Sex = Female
-## 
-##        Eye
-## Hair        Brown      Blue     Hazel     Green
-##   Black 0.5294118 0.4500000 0.3333333 0.4000000
-##   Brown 0.5546218 0.4047619 0.5370370 0.4827586
-##   Red   0.6153846 0.4117647 0.5000000 0.5000000
-##   Blond 0.5714286 0.6808511 0.5000000 0.5000000</code></pre>
-<pre class="r"><code>aperm(HairEyeColor, perm = c(&quot;Sex&quot;, &quot;Hair&quot;, &quot;Eye&quot;))</code></pre>
-<pre><code>## , , Eye = Brown
-## 
-##         Hair
-## Sex      Black Brown Red Blond
-##   Male      32    53  10     3
-##   Female    36    66  16     4
-## 
-## , , Eye = Blue
-## 
-##         Hair
-## Sex      Black Brown Red Blond
-##   Male      11    50  10    30
-##   Female     9    34   7    64
-## 
-## , , Eye = Hazel
-## 
-##         Hair
-## Sex      Black Brown Red Blond
-##   Male      10    25   7     5
-##   Female     5    29   7     5
-## 
-## , , Eye = Green
-## 
-##         Hair
-## Sex      Black Brown Red Blond
-##   Male       3    15   7     8
-##   Female     2    14   7     8</code></pre>
-<pre class="r"><code>library(kableExtra)</code></pre>
-<pre><code>## Warning in !is.null(rmarkdown::metadata$output) &amp;&amp; rmarkdown::metadata$output
-## %in% : &#39;length(x) = 2 &gt; 1&#39; in coercion to &#39;logical(1)&#39;</code></pre>
-<pre class="r"><code>kable(HairEyeColor)</code></pre>
-<table>
-<thead>
-<tr>
-<th style="text-align:left;">
-Hair
-</th>
-<th style="text-align:left;">
-Eye
-</th>
-<th style="text-align:left;">
-Sex
-</th>
-<th style="text-align:right;">
-Freq
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-Black
-</td>
-<td style="text-align:left;">
-Brown
-</td>
-<td style="text-align:left;">
-Male
-</td>
-<td style="text-align:right;">
-32
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Brown
-</td>
-<td style="text-align:left;">
-Brown
-</td>
-<td style="text-align:left;">
-Male
-</td>
-<td style="text-align:right;">
-53
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Red
-</td>
-<td style="text-align:left;">
-Brown
-</td>
-<td style="text-align:left;">
-Male
-</td>
-<td style="text-align:right;">
-10
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Blond
-</td>
-<td style="text-align:left;">
-Brown
-</td>
-<td style="text-align:left;">
-Male
-</td>
-<td style="text-align:right;">
-3
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Black
-</td>
-<td style="text-align:left;">
-Blue
-</td>
-<td style="text-align:left;">
-Male
-</td>
-<td style="text-align:right;">
-11
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Brown
-</td>
-<td style="text-align:left;">
-Blue
-</td>
-<td style="text-align:left;">
-Male
-</td>
-<td style="text-align:right;">
-50
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Red
-</td>
-<td style="text-align:left;">
-Blue
-</td>
-<td style="text-align:left;">
-Male
-</td>
-<td style="text-align:right;">
-10
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Blond
-</td>
-<td style="text-align:left;">
-Blue
-</td>
-<td style="text-align:left;">
-Male
-</td>
-<td style="text-align:right;">
-30
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Black
-</td>
-<td style="text-align:left;">
-Hazel
-</td>
-<td style="text-align:left;">
-Male
-</td>
-<td style="text-align:right;">
-10
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Brown
-</td>
-<td style="text-align:left;">
-Hazel
-</td>
-<td style="text-align:left;">
-Male
-</td>
-<td style="text-align:right;">
-25
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Red
-</td>
-<td style="text-align:left;">
-Hazel
-</td>
-<td style="text-align:left;">
-Male
-</td>
-<td style="text-align:right;">
-7
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Blond
-</td>
-<td style="text-align:left;">
-Hazel
-</td>
-<td style="text-align:left;">
-Male
-</td>
-<td style="text-align:right;">
-5
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Black
-</td>
-<td style="text-align:left;">
-Green
-</td>
-<td style="text-align:left;">
-Male
-</td>
-<td style="text-align:right;">
-3
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Brown
-</td>
-<td style="text-align:left;">
-Green
-</td>
-<td style="text-align:left;">
-Male
-</td>
-<td style="text-align:right;">
-15
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Red
-</td>
-<td style="text-align:left;">
-Green
-</td>
-<td style="text-align:left;">
-Male
-</td>
-<td style="text-align:right;">
-7
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Blond
-</td>
-<td style="text-align:left;">
-Green
-</td>
-<td style="text-align:left;">
-Male
-</td>
-<td style="text-align:right;">
-8
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Black
-</td>
-<td style="text-align:left;">
-Brown
-</td>
-<td style="text-align:left;">
-Female
-</td>
-<td style="text-align:right;">
-36
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Brown
-</td>
-<td style="text-align:left;">
-Brown
-</td>
-<td style="text-align:left;">
-Female
-</td>
-<td style="text-align:right;">
-66
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Red
-</td>
-<td style="text-align:left;">
-Brown
-</td>
-<td style="text-align:left;">
-Female
-</td>
-<td style="text-align:right;">
-16
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Blond
-</td>
-<td style="text-align:left;">
-Brown
-</td>
-<td style="text-align:left;">
-Female
-</td>
-<td style="text-align:right;">
-4
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Black
-</td>
-<td style="text-align:left;">
-Blue
-</td>
-<td style="text-align:left;">
-Female
-</td>
-<td style="text-align:right;">
-9
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Brown
-</td>
-<td style="text-align:left;">
-Blue
-</td>
-<td style="text-align:left;">
-Female
-</td>
-<td style="text-align:right;">
-34
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Red
-</td>
-<td style="text-align:left;">
-Blue
-</td>
-<td style="text-align:left;">
-Female
-</td>
-<td style="text-align:right;">
-7
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Blond
-</td>
-<td style="text-align:left;">
-Blue
-</td>
-<td style="text-align:left;">
-Female
-</td>
-<td style="text-align:right;">
-64
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Black
-</td>
-<td style="text-align:left;">
-Hazel
-</td>
-<td style="text-align:left;">
-Female
-</td>
-<td style="text-align:right;">
-5
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Brown
-</td>
-<td style="text-align:left;">
-Hazel
-</td>
-<td style="text-align:left;">
-Female
-</td>
-<td style="text-align:right;">
-29
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Red
-</td>
-<td style="text-align:left;">
-Hazel
-</td>
-<td style="text-align:left;">
-Female
-</td>
-<td style="text-align:right;">
-7
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Blond
-</td>
-<td style="text-align:left;">
-Hazel
-</td>
-<td style="text-align:left;">
-Female
-</td>
-<td style="text-align:right;">
-5
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Black
-</td>
-<td style="text-align:left;">
-Green
-</td>
-<td style="text-align:left;">
-Female
-</td>
-<td style="text-align:right;">
-2
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Brown
-</td>
-<td style="text-align:left;">
-Green
-</td>
-<td style="text-align:left;">
-Female
-</td>
-<td style="text-align:right;">
-14
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Red
-</td>
-<td style="text-align:left;">
-Green
-</td>
-<td style="text-align:left;">
-Female
-</td>
-<td style="text-align:right;">
-7
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Blond
-</td>
-<td style="text-align:left;">
-Green
-</td>
-<td style="text-align:left;">
-Female
-</td>
-<td style="text-align:right;">
-8
-</td>
-</tr>
-</tbody>
-</table>
-<pre class="r"><code>library(xtable)
-sex = factor(c(&quot;H&quot;, &quot;M&quot;, &quot;M&quot;, &quot;M&quot;, &quot;H&quot;, &quot;H&quot;, &quot;M&quot;, &quot;M&quot;))
-ans = factor(c(&quot;S&quot;, &quot;N&quot;, &quot;S&quot;, &quot;S&quot;, &quot;S&quot;, &quot;N&quot;, &quot;N&quot;, &quot;S&quot;))
-xtable(table(sex, ans)) # necesario incluir en el chunk results=&#39;asis&#39; y Knit en PDF</code></pre>
-% latex table generated in R 4.2.1 by xtable 1.8-4 package % Sun Sep 25
-23:26:59 2022
+<div id="la-función-cut" class="section level2">
+<h2>La función cut</h2>
+<pre class="r"><code>iris_df &lt;- iris
+petals &lt;- iris$Petal.Length
+iris_df$div1 &lt;- cut(petals, breaks = 5, right = FALSE)
+iris_df$div2 &lt;- cut(petals, breaks = ceiling(sqrt(length(petals))), right = FALSE)
+iris_df$div3 &lt;- cut(petals, breaks = c(1, 2, 3, 4, 5, 6, 7), right = FALSE)
+iris_df$div4 &lt;- cut(petals, breaks = 5, right = FALSE, labels = FALSE)
+iris_df$div5 &lt;- cut(petals, breaks = 5, right = FALSE,
+                    labels = c(&quot;Peq&quot;, &quot;Norm&quot;, &quot;Gran&quot;, &quot;XGran&quot;, &quot;Gigan&quot;))
+iris_df</code></pre>
+<pre><code>##     Sepal.Length Sepal.Width Petal.Length Petal.Width    Species         div1
+## 1            5.1         3.5          1.4         0.2     setosa [0.994,2.18)
+## 2            4.9         3.0          1.4         0.2     setosa [0.994,2.18)
+## 3            4.7         3.2          1.3         0.2     setosa [0.994,2.18)
+## 4            4.6         3.1          1.5         0.2     setosa [0.994,2.18)
+## 5            5.0         3.6          1.4         0.2     setosa [0.994,2.18)
+## 6            5.4         3.9          1.7         0.4     setosa [0.994,2.18)
+## 7            4.6         3.4          1.4         0.3     setosa [0.994,2.18)
+## 8            5.0         3.4          1.5         0.2     setosa [0.994,2.18)
+## 9            4.4         2.9          1.4         0.2     setosa [0.994,2.18)
+## 10           4.9         3.1          1.5         0.1     setosa [0.994,2.18)
+## 11           5.4         3.7          1.5         0.2     setosa [0.994,2.18)
+## 12           4.8         3.4          1.6         0.2     setosa [0.994,2.18)
+## 13           4.8         3.0          1.4         0.1     setosa [0.994,2.18)
+## 14           4.3         3.0          1.1         0.1     setosa [0.994,2.18)
+## 15           5.8         4.0          1.2         0.2     setosa [0.994,2.18)
+## 16           5.7         4.4          1.5         0.4     setosa [0.994,2.18)
+## 17           5.4         3.9          1.3         0.4     setosa [0.994,2.18)
+## 18           5.1         3.5          1.4         0.3     setosa [0.994,2.18)
+## 19           5.7         3.8          1.7         0.3     setosa [0.994,2.18)
+## 20           5.1         3.8          1.5         0.3     setosa [0.994,2.18)
+## 21           5.4         3.4          1.7         0.2     setosa [0.994,2.18)
+## 22           5.1         3.7          1.5         0.4     setosa [0.994,2.18)
+## 23           4.6         3.6          1.0         0.2     setosa [0.994,2.18)
+## 24           5.1         3.3          1.7         0.5     setosa [0.994,2.18)
+## 25           4.8         3.4          1.9         0.2     setosa [0.994,2.18)
+## 26           5.0         3.0          1.6         0.2     setosa [0.994,2.18)
+## 27           5.0         3.4          1.6         0.4     setosa [0.994,2.18)
+## 28           5.2         3.5          1.5         0.2     setosa [0.994,2.18)
+## 29           5.2         3.4          1.4         0.2     setosa [0.994,2.18)
+## 30           4.7         3.2          1.6         0.2     setosa [0.994,2.18)
+## 31           4.8         3.1          1.6         0.2     setosa [0.994,2.18)
+## 32           5.4         3.4          1.5         0.4     setosa [0.994,2.18)
+## 33           5.2         4.1          1.5         0.1     setosa [0.994,2.18)
+## 34           5.5         4.2          1.4         0.2     setosa [0.994,2.18)
+## 35           4.9         3.1          1.5         0.2     setosa [0.994,2.18)
+## 36           5.0         3.2          1.2         0.2     setosa [0.994,2.18)
+## 37           5.5         3.5          1.3         0.2     setosa [0.994,2.18)
+## 38           4.9         3.6          1.4         0.1     setosa [0.994,2.18)
+## 39           4.4         3.0          1.3         0.2     setosa [0.994,2.18)
+## 40           5.1         3.4          1.5         0.2     setosa [0.994,2.18)
+## 41           5.0         3.5          1.3         0.3     setosa [0.994,2.18)
+## 42           4.5         2.3          1.3         0.3     setosa [0.994,2.18)
+## 43           4.4         3.2          1.3         0.2     setosa [0.994,2.18)
+## 44           5.0         3.5          1.6         0.6     setosa [0.994,2.18)
+## 45           5.1         3.8          1.9         0.4     setosa [0.994,2.18)
+## 46           4.8         3.0          1.4         0.3     setosa [0.994,2.18)
+## 47           5.1         3.8          1.6         0.2     setosa [0.994,2.18)
+## 48           4.6         3.2          1.4         0.2     setosa [0.994,2.18)
+## 49           5.3         3.7          1.5         0.2     setosa [0.994,2.18)
+## 50           5.0         3.3          1.4         0.2     setosa [0.994,2.18)
+## 51           7.0         3.2          4.7         1.4 versicolor  [4.54,5.72)
+## 52           6.4         3.2          4.5         1.5 versicolor  [3.36,4.54)
+## 53           6.9         3.1          4.9         1.5 versicolor  [4.54,5.72)
+## 54           5.5         2.3          4.0         1.3 versicolor  [3.36,4.54)
+## 55           6.5         2.8          4.6         1.5 versicolor  [4.54,5.72)
+## 56           5.7         2.8          4.5         1.3 versicolor  [3.36,4.54)
+## 57           6.3         3.3          4.7         1.6 versicolor  [4.54,5.72)
+## 58           4.9         2.4          3.3         1.0 versicolor  [2.18,3.36)
+## 59           6.6         2.9          4.6         1.3 versicolor  [4.54,5.72)
+## 60           5.2         2.7          3.9         1.4 versicolor  [3.36,4.54)
+## 61           5.0         2.0          3.5         1.0 versicolor  [3.36,4.54)
+## 62           5.9         3.0          4.2         1.5 versicolor  [3.36,4.54)
+## 63           6.0         2.2          4.0         1.0 versicolor  [3.36,4.54)
+## 64           6.1         2.9          4.7         1.4 versicolor  [4.54,5.72)
+## 65           5.6         2.9          3.6         1.3 versicolor  [3.36,4.54)
+## 66           6.7         3.1          4.4         1.4 versicolor  [3.36,4.54)
+## 67           5.6         3.0          4.5         1.5 versicolor  [3.36,4.54)
+## 68           5.8         2.7          4.1         1.0 versicolor  [3.36,4.54)
+## 69           6.2         2.2          4.5         1.5 versicolor  [3.36,4.54)
+## 70           5.6         2.5          3.9         1.1 versicolor  [3.36,4.54)
+## 71           5.9         3.2          4.8         1.8 versicolor  [4.54,5.72)
+## 72           6.1         2.8          4.0         1.3 versicolor  [3.36,4.54)
+## 73           6.3         2.5          4.9         1.5 versicolor  [4.54,5.72)
+## 74           6.1         2.8          4.7         1.2 versicolor  [4.54,5.72)
+## 75           6.4         2.9          4.3         1.3 versicolor  [3.36,4.54)
+## 76           6.6         3.0          4.4         1.4 versicolor  [3.36,4.54)
+## 77           6.8         2.8          4.8         1.4 versicolor  [4.54,5.72)
+## 78           6.7         3.0          5.0         1.7 versicolor  [4.54,5.72)
+## 79           6.0         2.9          4.5         1.5 versicolor  [3.36,4.54)
+## 80           5.7         2.6          3.5         1.0 versicolor  [3.36,4.54)
+## 81           5.5         2.4          3.8         1.1 versicolor  [3.36,4.54)
+## 82           5.5         2.4          3.7         1.0 versicolor  [3.36,4.54)
+## 83           5.8         2.7          3.9         1.2 versicolor  [3.36,4.54)
+## 84           6.0         2.7          5.1         1.6 versicolor  [4.54,5.72)
+## 85           5.4         3.0          4.5         1.5 versicolor  [3.36,4.54)
+## 86           6.0         3.4          4.5         1.6 versicolor  [3.36,4.54)
+## 87           6.7         3.1          4.7         1.5 versicolor  [4.54,5.72)
+## 88           6.3         2.3          4.4         1.3 versicolor  [3.36,4.54)
+## 89           5.6         3.0          4.1         1.3 versicolor  [3.36,4.54)
+## 90           5.5         2.5          4.0         1.3 versicolor  [3.36,4.54)
+## 91           5.5         2.6          4.4         1.2 versicolor  [3.36,4.54)
+## 92           6.1         3.0          4.6         1.4 versicolor  [4.54,5.72)
+## 93           5.8         2.6          4.0         1.2 versicolor  [3.36,4.54)
+## 94           5.0         2.3          3.3         1.0 versicolor  [2.18,3.36)
+## 95           5.6         2.7          4.2         1.3 versicolor  [3.36,4.54)
+## 96           5.7         3.0          4.2         1.2 versicolor  [3.36,4.54)
+## 97           5.7         2.9          4.2         1.3 versicolor  [3.36,4.54)
+## 98           6.2         2.9          4.3         1.3 versicolor  [3.36,4.54)
+## 99           5.1         2.5          3.0         1.1 versicolor  [2.18,3.36)
+## 100          5.7         2.8          4.1         1.3 versicolor  [3.36,4.54)
+## 101          6.3         3.3          6.0         2.5  virginica  [5.72,6.91)
+## 102          5.8         2.7          5.1         1.9  virginica  [4.54,5.72)
+## 103          7.1         3.0          5.9         2.1  virginica  [5.72,6.91)
+## 104          6.3         2.9          5.6         1.8  virginica  [4.54,5.72)
+## 105          6.5         3.0          5.8         2.2  virginica  [5.72,6.91)
+## 106          7.6         3.0          6.6         2.1  virginica  [5.72,6.91)
+## 107          4.9         2.5          4.5         1.7  virginica  [3.36,4.54)
+## 108          7.3         2.9          6.3         1.8  virginica  [5.72,6.91)
+## 109          6.7         2.5          5.8         1.8  virginica  [5.72,6.91)
+## 110          7.2         3.6          6.1         2.5  virginica  [5.72,6.91)
+## 111          6.5         3.2          5.1         2.0  virginica  [4.54,5.72)
+## 112          6.4         2.7          5.3         1.9  virginica  [4.54,5.72)
+## 113          6.8         3.0          5.5         2.1  virginica  [4.54,5.72)
+## 114          5.7         2.5          5.0         2.0  virginica  [4.54,5.72)
+## 115          5.8         2.8          5.1         2.4  virginica  [4.54,5.72)
+## 116          6.4         3.2          5.3         2.3  virginica  [4.54,5.72)
+## 117          6.5         3.0          5.5         1.8  virginica  [4.54,5.72)
+## 118          7.7         3.8          6.7         2.2  virginica  [5.72,6.91)
+## 119          7.7         2.6          6.9         2.3  virginica  [5.72,6.91)
+## 120          6.0         2.2          5.0         1.5  virginica  [4.54,5.72)
+## 121          6.9         3.2          5.7         2.3  virginica  [4.54,5.72)
+## 122          5.6         2.8          4.9         2.0  virginica  [4.54,5.72)
+## 123          7.7         2.8          6.7         2.0  virginica  [5.72,6.91)
+## 124          6.3         2.7          4.9         1.8  virginica  [4.54,5.72)
+## 125          6.7         3.3          5.7         2.1  virginica  [4.54,5.72)
+## 126          7.2         3.2          6.0         1.8  virginica  [5.72,6.91)
+## 127          6.2         2.8          4.8         1.8  virginica  [4.54,5.72)
+## 128          6.1         3.0          4.9         1.8  virginica  [4.54,5.72)
+## 129          6.4         2.8          5.6         2.1  virginica  [4.54,5.72)
+## 130          7.2         3.0          5.8         1.6  virginica  [5.72,6.91)
+## 131          7.4         2.8          6.1         1.9  virginica  [5.72,6.91)
+## 132          7.9         3.8          6.4         2.0  virginica  [5.72,6.91)
+## 133          6.4         2.8          5.6         2.2  virginica  [4.54,5.72)
+## 134          6.3         2.8          5.1         1.5  virginica  [4.54,5.72)
+## 135          6.1         2.6          5.6         1.4  virginica  [4.54,5.72)
+## 136          7.7         3.0          6.1         2.3  virginica  [5.72,6.91)
+## 137          6.3         3.4          5.6         2.4  virginica  [4.54,5.72)
+## 138          6.4         3.1          5.5         1.8  virginica  [4.54,5.72)
+## 139          6.0         3.0          4.8         1.8  virginica  [4.54,5.72)
+## 140          6.9         3.1          5.4         2.1  virginica  [4.54,5.72)
+## 141          6.7         3.1          5.6         2.4  virginica  [4.54,5.72)
+## 142          6.9         3.1          5.1         2.3  virginica  [4.54,5.72)
+## 143          5.8         2.7          5.1         1.9  virginica  [4.54,5.72)
+## 144          6.8         3.2          5.9         2.3  virginica  [5.72,6.91)
+## 145          6.7         3.3          5.7         2.5  virginica  [4.54,5.72)
+## 146          6.7         3.0          5.2         2.3  virginica  [4.54,5.72)
+## 147          6.3         2.5          5.0         1.9  virginica  [4.54,5.72)
+## 148          6.5         3.0          5.2         2.0  virginica  [4.54,5.72)
+## 149          6.2         3.4          5.4         2.3  virginica  [4.54,5.72)
+## 150          5.9         3.0          5.1         1.8  virginica  [4.54,5.72)
+##             div2  div3 div4  div5
+## 1   [0.994,1.45) [1,2)    1   Peq
+## 2   [0.994,1.45) [1,2)    1   Peq
+## 3   [0.994,1.45) [1,2)    1   Peq
+## 4    [1.45,1.91) [1,2)    1   Peq
+## 5   [0.994,1.45) [1,2)    1   Peq
+## 6    [1.45,1.91) [1,2)    1   Peq
+## 7   [0.994,1.45) [1,2)    1   Peq
+## 8    [1.45,1.91) [1,2)    1   Peq
+## 9   [0.994,1.45) [1,2)    1   Peq
+## 10   [1.45,1.91) [1,2)    1   Peq
+## 11   [1.45,1.91) [1,2)    1   Peq
+## 12   [1.45,1.91) [1,2)    1   Peq
+## 13  [0.994,1.45) [1,2)    1   Peq
+## 14  [0.994,1.45) [1,2)    1   Peq
+## 15  [0.994,1.45) [1,2)    1   Peq
+## 16   [1.45,1.91) [1,2)    1   Peq
+## 17  [0.994,1.45) [1,2)    1   Peq
+## 18  [0.994,1.45) [1,2)    1   Peq
+## 19   [1.45,1.91) [1,2)    1   Peq
+## 20   [1.45,1.91) [1,2)    1   Peq
+## 21   [1.45,1.91) [1,2)    1   Peq
+## 22   [1.45,1.91) [1,2)    1   Peq
+## 23  [0.994,1.45) [1,2)    1   Peq
+## 24   [1.45,1.91) [1,2)    1   Peq
+## 25   [1.45,1.91) [1,2)    1   Peq
+## 26   [1.45,1.91) [1,2)    1   Peq
+## 27   [1.45,1.91) [1,2)    1   Peq
+## 28   [1.45,1.91) [1,2)    1   Peq
+## 29  [0.994,1.45) [1,2)    1   Peq
+## 30   [1.45,1.91) [1,2)    1   Peq
+## 31   [1.45,1.91) [1,2)    1   Peq
+## 32   [1.45,1.91) [1,2)    1   Peq
+## 33   [1.45,1.91) [1,2)    1   Peq
+## 34  [0.994,1.45) [1,2)    1   Peq
+## 35   [1.45,1.91) [1,2)    1   Peq
+## 36  [0.994,1.45) [1,2)    1   Peq
+## 37  [0.994,1.45) [1,2)    1   Peq
+## 38  [0.994,1.45) [1,2)    1   Peq
+## 39  [0.994,1.45) [1,2)    1   Peq
+## 40   [1.45,1.91) [1,2)    1   Peq
+## 41  [0.994,1.45) [1,2)    1   Peq
+## 42  [0.994,1.45) [1,2)    1   Peq
+## 43  [0.994,1.45) [1,2)    1   Peq
+## 44   [1.45,1.91) [1,2)    1   Peq
+## 45   [1.45,1.91) [1,2)    1   Peq
+## 46  [0.994,1.45) [1,2)    1   Peq
+## 47   [1.45,1.91) [1,2)    1   Peq
+## 48  [0.994,1.45) [1,2)    1   Peq
+## 49   [1.45,1.91) [1,2)    1   Peq
+## 50  [0.994,1.45) [1,2)    1   Peq
+## 51   [4.63,5.08) [4,5)    4 XGran
+## 52   [4.18,4.63) [4,5)    3  Gran
+## 53   [4.63,5.08) [4,5)    4 XGran
+## 54   [3.72,4.18) [4,5)    3  Gran
+## 55   [4.18,4.63) [4,5)    4 XGran
+## 56   [4.18,4.63) [4,5)    3  Gran
+## 57   [4.63,5.08) [4,5)    4 XGran
+## 58   [3.27,3.72) [3,4)    2  Norm
+## 59   [4.18,4.63) [4,5)    4 XGran
+## 60   [3.72,4.18) [3,4)    3  Gran
+## 61   [3.27,3.72) [3,4)    3  Gran
+## 62   [4.18,4.63) [4,5)    3  Gran
+## 63   [3.72,4.18) [4,5)    3  Gran
+## 64   [4.63,5.08) [4,5)    4 XGran
+## 65   [3.27,3.72) [3,4)    3  Gran
+## 66   [4.18,4.63) [4,5)    3  Gran
+## 67   [4.18,4.63) [4,5)    3  Gran
+## 68   [3.72,4.18) [4,5)    3  Gran
+## 69   [4.18,4.63) [4,5)    3  Gran
+## 70   [3.72,4.18) [3,4)    3  Gran
+## 71   [4.63,5.08) [4,5)    4 XGran
+## 72   [3.72,4.18) [4,5)    3  Gran
+## 73   [4.63,5.08) [4,5)    4 XGran
+## 74   [4.63,5.08) [4,5)    4 XGran
+## 75   [4.18,4.63) [4,5)    3  Gran
+## 76   [4.18,4.63) [4,5)    3  Gran
+## 77   [4.63,5.08) [4,5)    4 XGran
+## 78   [4.63,5.08) [5,6)    4 XGran
+## 79   [4.18,4.63) [4,5)    3  Gran
+## 80   [3.27,3.72) [3,4)    3  Gran
+## 81   [3.72,4.18) [3,4)    3  Gran
+## 82   [3.27,3.72) [3,4)    3  Gran
+## 83   [3.72,4.18) [3,4)    3  Gran
+## 84   [5.08,5.54) [5,6)    4 XGran
+## 85   [4.18,4.63) [4,5)    3  Gran
+## 86   [4.18,4.63) [4,5)    3  Gran
+## 87   [4.63,5.08) [4,5)    4 XGran
+## 88   [4.18,4.63) [4,5)    3  Gran
+## 89   [3.72,4.18) [4,5)    3  Gran
+## 90   [3.72,4.18) [4,5)    3  Gran
+## 91   [4.18,4.63) [4,5)    3  Gran
+## 92   [4.18,4.63) [4,5)    4 XGran
+## 93   [3.72,4.18) [4,5)    3  Gran
+## 94   [3.27,3.72) [3,4)    2  Norm
+## 95   [4.18,4.63) [4,5)    3  Gran
+## 96   [4.18,4.63) [4,5)    3  Gran
+## 97   [4.18,4.63) [4,5)    3  Gran
+## 98   [4.18,4.63) [4,5)    3  Gran
+## 99   [2.82,3.27) [3,4)    2  Norm
+## 100  [3.72,4.18) [4,5)    3  Gran
+## 101  [5.99,6.45) [6,7)    5 Gigan
+## 102  [5.08,5.54) [5,6)    4 XGran
+## 103  [5.54,5.99) [5,6)    5 Gigan
+## 104  [5.54,5.99) [5,6)    4 XGran
+## 105  [5.54,5.99) [5,6)    5 Gigan
+## 106  [6.45,6.91) [6,7)    5 Gigan
+## 107  [4.18,4.63) [4,5)    3  Gran
+## 108  [5.99,6.45) [6,7)    5 Gigan
+## 109  [5.54,5.99) [5,6)    5 Gigan
+## 110  [5.99,6.45) [6,7)    5 Gigan
+## 111  [5.08,5.54) [5,6)    4 XGran
+## 112  [5.08,5.54) [5,6)    4 XGran
+## 113  [5.08,5.54) [5,6)    4 XGran
+## 114  [4.63,5.08) [5,6)    4 XGran
+## 115  [5.08,5.54) [5,6)    4 XGran
+## 116  [5.08,5.54) [5,6)    4 XGran
+## 117  [5.08,5.54) [5,6)    4 XGran
+## 118  [6.45,6.91) [6,7)    5 Gigan
+## 119  [6.45,6.91) [6,7)    5 Gigan
+## 120  [4.63,5.08) [5,6)    4 XGran
+## 121  [5.54,5.99) [5,6)    4 XGran
+## 122  [4.63,5.08) [4,5)    4 XGran
+## 123  [6.45,6.91) [6,7)    5 Gigan
+## 124  [4.63,5.08) [4,5)    4 XGran
+## 125  [5.54,5.99) [5,6)    4 XGran
+## 126  [5.99,6.45) [6,7)    5 Gigan
+## 127  [4.63,5.08) [4,5)    4 XGran
+## 128  [4.63,5.08) [4,5)    4 XGran
+## 129  [5.54,5.99) [5,6)    4 XGran
+## 130  [5.54,5.99) [5,6)    5 Gigan
+## 131  [5.99,6.45) [6,7)    5 Gigan
+## 132  [5.99,6.45) [6,7)    5 Gigan
+## 133  [5.54,5.99) [5,6)    4 XGran
+## 134  [5.08,5.54) [5,6)    4 XGran
+## 135  [5.54,5.99) [5,6)    4 XGran
+## 136  [5.99,6.45) [6,7)    5 Gigan
+## 137  [5.54,5.99) [5,6)    4 XGran
+## 138  [5.08,5.54) [5,6)    4 XGran
+## 139  [4.63,5.08) [4,5)    4 XGran
+## 140  [5.08,5.54) [5,6)    4 XGran
+## 141  [5.54,5.99) [5,6)    4 XGran
+## 142  [5.08,5.54) [5,6)    4 XGran
+## 143  [5.08,5.54) [5,6)    4 XGran
+## 144  [5.54,5.99) [5,6)    5 Gigan
+## 145  [5.54,5.99) [5,6)    4 XGran
+## 146  [5.08,5.54) [5,6)    4 XGran
+## 147  [4.63,5.08) [5,6)    4 XGran
+## 148  [5.08,5.54) [5,6)    4 XGran
+## 149  [5.08,5.54) [5,6)    4 XGran
+## 150  [5.08,5.54) [5,6)    4 XGran</code></pre>
 </div>
 
 

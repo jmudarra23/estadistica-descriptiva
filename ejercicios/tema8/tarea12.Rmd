@@ -1,0 +1,114 @@
+---
+title: "Tarea 12 - Estudio de las Notas según la Carrera"
+author: "Jesus Mudarra Luján"
+date: "`r Sys.Date()`"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Carga el conjunto de datos de la carpeta data llamado `grades.txt` en `R` y responde a las siguientes preguntas:
+
+```{r}
+grades <- read.table("../../data/grades.txt", header = TRUE, sep = " ")
+```
+
+## Pregunta 1
+
+Calcula la media, la mediana y la moda redondeada a dos cifras decimales de las notas numéricas de los exámenes tanto de forma conjunta como por estudio universitario. ¿En qué grupo observamos la nota más alta? ¿Qué grupo está por encima de la media de estudiantes?
+
+La media en conjunto es:
+
+```{r}
+round(mean(grades$nota), 2)
+```
+
+La mediana en conjunto es:
+
+```{r}
+round(median(grades$nota), 2)
+```
+
+La moda en conjunto es:
+
+```{r}
+mode <- function(x){
+   round(as.numeric(names(which.max(table(x)))), 2)
+}
+
+mode(grades$nota)
+```
+
+Las medias por estudio universitario:
+
+```{r}
+round(by(grades$nota, grades$estudio, FUN = mean), 2)
+```
+
+Las medianas por estudio universitario:
+
+```{r}
+round(by(grades$nota, grades$estudio, FUN = median), 2)
+```
+
+Las modas por estudio universitario:
+
+```{r}
+round(by(grades$nota, grades$estudio, FUN = mode), 2)
+```
+
+Cálculo de la nota máxima por estudio universitario:
+
+```{r}
+round(by(grades$nota, grades$estudio, FUN = max), 2)
+```
+
+La nota más alta se encuentra en el grupo Industrial con una nota de 10.02. El grupo que se encuentra por encima de la media es Mates con un 4.22 de media.
+
+## Pregunta 2
+
+¿En qué grupo observamos más variación de notas? Justifica tu respuesta.
+
+```{r}
+round(by(grades$nota, grades$estudio, FUN = var), 2)
+```
+
+El grupo que más variación de notas tiene es Mates ya que presenta una mayor varianza.
+
+## Pregunta 3
+
+¿Hay mucha diferencia entre el grupo que has respondido en el ejercicio 1 y en el ejercicio 2? Intenta dar una explicación objetiva del suceso.
+
+Existe diferencia entre el grupo de Mates y el grupo de Industriales. La nota media de Mates (4.22) es superior a la de Industriales (3.58), no obstante la nota máxima (10.02) se la lleva éste último. Por otro lado, el grupo de Mates el el que presenta mayor varianza (4.82) en sus notas.
+
+## Pregunta 4
+
+Dibuja en un único gráfico los cuatro diagramas de caja, uno para cada grupo. Añade también la nota media, pon nombre, título y color al gráfico para documentarlo correctamente.
+
+```{r}
+boxplot(nota ~ estudio, data = grades,
+        main = "Diagrama de Caja y Bigotes de las notas por estudio",
+        xlab = "Estudio", ylab = "Nota", col = c("green", "yellow", "red", "orange"))
+medias = aggregate(nota ~ estudio, data = grades, FUN = mean)
+points(medias, col = "purple", pch = 15)
+```
+
+## Pregunta 5
+
+¿Observas algunos valores atípicos en el boxplot anterior? ¿A qué grupo pertenece?
+
+Existe un valor atípico en cada grupo excepto en el grupo `Mates`.
+
+## Pregunta 6
+
+Indica a partir del boxplot anterior en qué grupo observamos más variedad de notas.
+
+El grupo que más variedad presenta es en el de Mates. Se puede observar por el tamaño del rango intercuartílico (tamaño de la caja).
+
+## Pregunta 7
+
+En base a todo lo anterior, ¿puedes afirmar de forma estadística que el examen de carrera ha ido mejor en algún estudio que en los demás?
+
+El grupo que mejor le ha ido el examen es el de mates. Se puede observar en el boxplot del ejercicio 4 donde, a pesar de ser el grupo que presenta mayor varianza en sus notas, es el grupo que tiene la media y mediana más alta de todos.

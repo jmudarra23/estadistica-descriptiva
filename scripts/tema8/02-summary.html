@@ -11,9 +11,9 @@
 
 <meta name="author" content="Jesus Mudarra Luján" />
 
-<meta name="date" content="2022-09-23" />
+<meta name="date" content="2022-09-30" />
 
-<title>Conjunto de Datos HairEyeColor</title>
+<title>Summary</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -363,577 +363,76 @@ pre code {
 
 
 
-<h1 class="title toc-ignore">Conjunto de Datos HairEyeColor</h1>
+<h1 class="title toc-ignore">Summary</h1>
 <h4 class="author">Jesus Mudarra Luján</h4>
-<h4 class="date">2022-09-23</h4>
+<h4 class="date">2022-09-30</h4>
 
 </div>
 
 
-<div id="ejemplo-de-color-de-ojos-y-pelo" class="section level2">
-<h2>Ejemplo de color de ojos y pelo</h2>
-<pre class="r"><code>HairEyeColor</code></pre>
-<pre><code>## , , Sex = Male
-## 
-##        Eye
-## Hair    Brown Blue Hazel Green
-##   Black    32   11    10     3
-##   Brown    53   50    25    15
-##   Red      10   10     7     7
-##   Blond     3   30     5     8
-## 
-## , , Sex = Female
-## 
-##        Eye
-## Hair    Brown Blue Hazel Green
-##   Black    36    9     5     2
-##   Brown    66   34    29    14
-##   Red      16    7     7     7
-##   Blond     4   64     5     8</code></pre>
-<pre class="r"><code>sum(HairEyeColor) -&gt; total</code></pre>
-<p>El total de individuos de la tabla de datos es 592.</p>
-<pre class="r"><code>prop.table(HairEyeColor, margin = 3)</code></pre>
-<pre><code>## , , Sex = Male
-## 
-##        Eye
-## Hair          Brown        Blue       Hazel       Green
-##   Black 0.114695341 0.039426523 0.035842294 0.010752688
-##   Brown 0.189964158 0.179211470 0.089605735 0.053763441
-##   Red   0.035842294 0.035842294 0.025089606 0.025089606
-##   Blond 0.010752688 0.107526882 0.017921147 0.028673835
-## 
-## , , Sex = Female
-## 
-##        Eye
-## Hair          Brown        Blue       Hazel       Green
-##   Black 0.115015974 0.028753994 0.015974441 0.006389776
-##   Brown 0.210862620 0.108626198 0.092651757 0.044728435
-##   Red   0.051118211 0.022364217 0.022364217 0.022364217
-##   Blond 0.012779553 0.204472843 0.015974441 0.025559105</code></pre>
-<pre class="r"><code>prop.table(HairEyeColor, margin = c(1, 2))</code></pre>
-<pre><code>## , , Sex = Male
-## 
-##        Eye
-## Hair        Brown      Blue     Hazel     Green
-##   Black 0.4705882 0.5500000 0.6666667 0.6000000
-##   Brown 0.4453782 0.5952381 0.4629630 0.5172414
-##   Red   0.3846154 0.5882353 0.5000000 0.5000000
-##   Blond 0.4285714 0.3191489 0.5000000 0.5000000
-## 
-## , , Sex = Female
-## 
-##        Eye
-## Hair        Brown      Blue     Hazel     Green
-##   Black 0.5294118 0.4500000 0.3333333 0.4000000
-##   Brown 0.5546218 0.4047619 0.5370370 0.4827586
-##   Red   0.6153846 0.4117647 0.5000000 0.5000000
-##   Blond 0.5714286 0.6808511 0.5000000 0.5000000</code></pre>
-<pre class="r"><code>aperm(HairEyeColor, perm = c(&quot;Sex&quot;, &quot;Hair&quot;, &quot;Eye&quot;))</code></pre>
-<pre><code>## , , Eye = Brown
-## 
-##         Hair
-## Sex      Black Brown Red Blond
-##   Male      32    53  10     3
-##   Female    36    66  16     4
-## 
-## , , Eye = Blue
-## 
-##         Hair
-## Sex      Black Brown Red Blond
-##   Male      11    50  10    30
-##   Female     9    34   7    64
-## 
-## , , Eye = Hazel
-## 
-##         Hair
-## Sex      Black Brown Red Blond
-##   Male      10    25   7     5
-##   Female     5    29   7     5
-## 
-## , , Eye = Green
-## 
-##         Hair
-## Sex      Black Brown Red Blond
-##   Male       3    15   7     8
-##   Female     2    14   7     8</code></pre>
-<pre class="r"><code>library(kableExtra)</code></pre>
-<pre><code>## Warning in !is.null(rmarkdown::metadata$output) &amp;&amp; rmarkdown::metadata$output
-## %in% : &#39;length(x) = 2 &gt; 1&#39; in coercion to &#39;logical(1)&#39;</code></pre>
-<pre class="r"><code>kable(HairEyeColor)</code></pre>
-<table>
-<thead>
-<tr>
-<th style="text-align:left;">
-Hair
-</th>
-<th style="text-align:left;">
-Eye
-</th>
-<th style="text-align:left;">
-Sex
-</th>
-<th style="text-align:right;">
-Freq
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-Black
-</td>
-<td style="text-align:left;">
-Brown
-</td>
-<td style="text-align:left;">
-Male
-</td>
-<td style="text-align:right;">
-32
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Brown
-</td>
-<td style="text-align:left;">
-Brown
-</td>
-<td style="text-align:left;">
-Male
-</td>
-<td style="text-align:right;">
-53
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Red
-</td>
-<td style="text-align:left;">
-Brown
-</td>
-<td style="text-align:left;">
-Male
-</td>
-<td style="text-align:right;">
-10
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Blond
-</td>
-<td style="text-align:left;">
-Brown
-</td>
-<td style="text-align:left;">
-Male
-</td>
-<td style="text-align:right;">
-3
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Black
-</td>
-<td style="text-align:left;">
-Blue
-</td>
-<td style="text-align:left;">
-Male
-</td>
-<td style="text-align:right;">
-11
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Brown
-</td>
-<td style="text-align:left;">
-Blue
-</td>
-<td style="text-align:left;">
-Male
-</td>
-<td style="text-align:right;">
-50
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Red
-</td>
-<td style="text-align:left;">
-Blue
-</td>
-<td style="text-align:left;">
-Male
-</td>
-<td style="text-align:right;">
-10
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Blond
-</td>
-<td style="text-align:left;">
-Blue
-</td>
-<td style="text-align:left;">
-Male
-</td>
-<td style="text-align:right;">
-30
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Black
-</td>
-<td style="text-align:left;">
-Hazel
-</td>
-<td style="text-align:left;">
-Male
-</td>
-<td style="text-align:right;">
-10
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Brown
-</td>
-<td style="text-align:left;">
-Hazel
-</td>
-<td style="text-align:left;">
-Male
-</td>
-<td style="text-align:right;">
-25
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Red
-</td>
-<td style="text-align:left;">
-Hazel
-</td>
-<td style="text-align:left;">
-Male
-</td>
-<td style="text-align:right;">
-7
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Blond
-</td>
-<td style="text-align:left;">
-Hazel
-</td>
-<td style="text-align:left;">
-Male
-</td>
-<td style="text-align:right;">
-5
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Black
-</td>
-<td style="text-align:left;">
-Green
-</td>
-<td style="text-align:left;">
-Male
-</td>
-<td style="text-align:right;">
-3
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Brown
-</td>
-<td style="text-align:left;">
-Green
-</td>
-<td style="text-align:left;">
-Male
-</td>
-<td style="text-align:right;">
-15
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Red
-</td>
-<td style="text-align:left;">
-Green
-</td>
-<td style="text-align:left;">
-Male
-</td>
-<td style="text-align:right;">
-7
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Blond
-</td>
-<td style="text-align:left;">
-Green
-</td>
-<td style="text-align:left;">
-Male
-</td>
-<td style="text-align:right;">
-8
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Black
-</td>
-<td style="text-align:left;">
-Brown
-</td>
-<td style="text-align:left;">
-Female
-</td>
-<td style="text-align:right;">
-36
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Brown
-</td>
-<td style="text-align:left;">
-Brown
-</td>
-<td style="text-align:left;">
-Female
-</td>
-<td style="text-align:right;">
-66
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Red
-</td>
-<td style="text-align:left;">
-Brown
-</td>
-<td style="text-align:left;">
-Female
-</td>
-<td style="text-align:right;">
-16
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Blond
-</td>
-<td style="text-align:left;">
-Brown
-</td>
-<td style="text-align:left;">
-Female
-</td>
-<td style="text-align:right;">
-4
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Black
-</td>
-<td style="text-align:left;">
-Blue
-</td>
-<td style="text-align:left;">
-Female
-</td>
-<td style="text-align:right;">
-9
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Brown
-</td>
-<td style="text-align:left;">
-Blue
-</td>
-<td style="text-align:left;">
-Female
-</td>
-<td style="text-align:right;">
-34
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Red
-</td>
-<td style="text-align:left;">
-Blue
-</td>
-<td style="text-align:left;">
-Female
-</td>
-<td style="text-align:right;">
-7
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Blond
-</td>
-<td style="text-align:left;">
-Blue
-</td>
-<td style="text-align:left;">
-Female
-</td>
-<td style="text-align:right;">
-64
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Black
-</td>
-<td style="text-align:left;">
-Hazel
-</td>
-<td style="text-align:left;">
-Female
-</td>
-<td style="text-align:right;">
-5
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Brown
-</td>
-<td style="text-align:left;">
-Hazel
-</td>
-<td style="text-align:left;">
-Female
-</td>
-<td style="text-align:right;">
-29
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Red
-</td>
-<td style="text-align:left;">
-Hazel
-</td>
-<td style="text-align:left;">
-Female
-</td>
-<td style="text-align:right;">
-7
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Blond
-</td>
-<td style="text-align:left;">
-Hazel
-</td>
-<td style="text-align:left;">
-Female
-</td>
-<td style="text-align:right;">
-5
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Black
-</td>
-<td style="text-align:left;">
-Green
-</td>
-<td style="text-align:left;">
-Female
-</td>
-<td style="text-align:right;">
-2
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Brown
-</td>
-<td style="text-align:left;">
-Green
-</td>
-<td style="text-align:left;">
-Female
-</td>
-<td style="text-align:right;">
-14
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Red
-</td>
-<td style="text-align:left;">
-Green
-</td>
-<td style="text-align:left;">
-Female
-</td>
-<td style="text-align:right;">
-7
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Blond
-</td>
-<td style="text-align:left;">
-Green
-</td>
-<td style="text-align:left;">
-Female
-</td>
-<td style="text-align:right;">
-8
-</td>
-</tr>
-</tbody>
-</table>
-<pre class="r"><code>library(xtable)
-sex = factor(c(&quot;H&quot;, &quot;M&quot;, &quot;M&quot;, &quot;M&quot;, &quot;H&quot;, &quot;H&quot;, &quot;M&quot;, &quot;M&quot;))
-ans = factor(c(&quot;S&quot;, &quot;N&quot;, &quot;S&quot;, &quot;S&quot;, &quot;S&quot;, &quot;N&quot;, &quot;N&quot;, &quot;S&quot;))
-xtable(table(sex, ans)) # necesario incluir en el chunk results=&#39;asis&#39; y Knit en PDF</code></pre>
-% latex table generated in R 4.2.1 by xtable 1.8-4 package % Sun Sep 25
-23:26:59 2022
+<div id="summary" class="section level2">
+<h2>Summary</h2>
+<pre class="r"><code>by(iris[, c(1, 3)], iris$Species, FUN = summary)</code></pre>
+<pre><code>## iris$Species: setosa
+##   Sepal.Length    Petal.Length  
+##  Min.   :4.300   Min.   :1.000  
+##  1st Qu.:4.800   1st Qu.:1.400  
+##  Median :5.000   Median :1.500  
+##  Mean   :5.006   Mean   :1.462  
+##  3rd Qu.:5.200   3rd Qu.:1.575  
+##  Max.   :5.800   Max.   :1.900  
+## ------------------------------------------------------------ 
+## iris$Species: versicolor
+##   Sepal.Length    Petal.Length 
+##  Min.   :4.900   Min.   :3.00  
+##  1st Qu.:5.600   1st Qu.:4.00  
+##  Median :5.900   Median :4.35  
+##  Mean   :5.936   Mean   :4.26  
+##  3rd Qu.:6.300   3rd Qu.:4.60  
+##  Max.   :7.000   Max.   :5.10  
+## ------------------------------------------------------------ 
+## iris$Species: virginica
+##   Sepal.Length    Petal.Length  
+##  Min.   :4.900   Min.   :4.500  
+##  1st Qu.:6.225   1st Qu.:5.100  
+##  Median :6.500   Median :5.550  
+##  Mean   :6.588   Mean   :5.552  
+##  3rd Qu.:6.900   3rd Qu.:5.875  
+##  Max.   :7.900   Max.   :6.900</code></pre>
+<pre class="r"><code>aggregate(cbind(Sepal.Length, Petal.Length) ~ Species, data = iris, FUN = summary)</code></pre>
+<pre><code>##      Species Sepal.Length.Min. Sepal.Length.1st Qu. Sepal.Length.Median
+## 1     setosa             4.300                4.800               5.000
+## 2 versicolor             4.900                5.600               5.900
+## 3  virginica             4.900                6.225               6.500
+##   Sepal.Length.Mean Sepal.Length.3rd Qu. Sepal.Length.Max. Petal.Length.Min.
+## 1             5.006                5.200             5.800             1.000
+## 2             5.936                6.300             7.000             3.000
+## 3             6.588                6.900             7.900             4.500
+##   Petal.Length.1st Qu. Petal.Length.Median Petal.Length.Mean
+## 1                1.400               1.500             1.462
+## 2                4.000               4.350             4.260
+## 3                5.100               5.550             5.552
+##   Petal.Length.3rd Qu. Petal.Length.Max.
+## 1                1.575             1.900
+## 2                4.600             5.100
+## 3                5.875             6.900</code></pre>
+<pre class="r"><code>x = c(1, 2, 3, NA)
+sum(x)</code></pre>
+<pre><code>## [1] NA</code></pre>
+<pre class="r"><code>sum(x, na.rm = TRUE)</code></pre>
+<pre><code>## [1] 6</code></pre>
+<pre class="r"><code>mean(x)</code></pre>
+<pre><code>## [1] NA</code></pre>
+<pre class="r"><code>mean(x, na.rm = TRUE)</code></pre>
+<pre><code>## [1] 2</code></pre>
+<pre class="r"><code>var(x)</code></pre>
+<pre><code>## [1] NA</code></pre>
+<pre class="r"><code>var(x, na.rm = TRUE)</code></pre>
+<pre><code>## [1] 1</code></pre>
+<pre class="r"><code>sd(x)</code></pre>
+<pre><code>## [1] NA</code></pre>
+<pre class="r"><code>sd(x, na.rm = TRUE)</code></pre>
+<pre><code>## [1] 1</code></pre>
 </div>
 
 

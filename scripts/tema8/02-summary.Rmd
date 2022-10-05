@@ -1,0 +1,32 @@
+---
+title: "Summary"
+author: "Jesus Mudarra Luján"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Summary
+
+```{r}
+by(iris[, c(1, 3)], iris$Species, FUN = summary)
+```
+
+```{r}
+aggregate(cbind(Sepal.Length, Petal.Length) ~ Species, data = iris, FUN = summary)
+```
+
+```{r}
+x = c(1, 2, 3, NA)
+sum(x)
+sum(x, na.rm = TRUE)
+mean(x)
+mean(x, na.rm = TRUE)
+var(x)
+var(x, na.rm = TRUE)
+sd(x)
+sd(x, na.rm = TRUE)
+```

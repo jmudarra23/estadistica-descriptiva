@@ -3,8 +3,8 @@ title: "Conjunto de Datos HairEyeColor"
 author: "Jesus Mudarra Luján"
 date: '2022-09-23'
 output:
-  html_document: default
   pdf_document: default
+  html_document: default
 ---
 
 ```{r setup, include=FALSE}

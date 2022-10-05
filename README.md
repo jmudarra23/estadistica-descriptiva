@@ -21,3 +21,43 @@ o bien:
 ```bash
 conda env create -f r-basic.yml
 ```
+
+## Instalación de la librería ggplot
+
+Al importar `ggplot` salta un error que se ha solucionado siguiendo los pasos del siguiente [link](https://github.com/yhat/ggpy/issues/662#issuecomment-484138308).
+
+Hay que hacer varios cambios en ficheros internos de la librería.
+
+`ggplot/utils.py`:
+
+Cambiar
+
+```bash
+date_types = (
+    pd.tslib.Timestamp,
+    pd.DatetimeIndex,
+    pd.Period,
+    pd.PeriodIndex,
+    datetime.datetime,
+    datetime.time
+)
+```
+
+a
+
+```bash
+date_types = (
+    pd.Timestamp,
+    pd.DatetimeIndex,
+    pd.Period,
+    pd.PeriodIndex,
+    datetime.datetime,
+    datetime.time
+)
+```
+
+`ggplot/stats/smoothers.py`:
+
+Hacer lo mismo y además comentar:
+
+`from pandas.lib import Timestamp`

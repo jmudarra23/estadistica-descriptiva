@@ -382,68 +382,68 @@ table(sex, ans, place)</code></pre>
 ## 
 ##    ans
 ## sex No Si
-##   H  2  6
-##   M  5  6
+##   H  3  9
+##   M  7  6
 ## 
 ## , , place = Barcelona
 ## 
 ##    ans
 ## sex No Si
-##   H  7  6
-##   M  2  2
+##   H  5  9
+##   M  4  2
 ## 
 ## , , place = Cobija
 ## 
 ##    ans
 ## sex No Si
-##   H  7  4
-##   M  6  3
+##   H  0  6
+##   M  6  2
 ## 
 ## , , place = San Francisco
 ## 
 ##    ans
 ## sex No Si
-##   H  8  7
-##   M  7  1
+##   H  4  2
+##   M  6  5
 ## 
 ## , , place = Valencia
 ## 
 ##    ans
 ## sex No Si
-##   H  3  9
-##   M  4  5</code></pre>
+##   H 10  2
+##   M  5  7</code></pre>
 <pre class="r"><code>ftable(sex, ans, place) # flat table</code></pre>
 <pre><code>##         place Asturias Barcelona Cobija San Francisco Valencia
 ## sex ans                                                       
-## H   No               2         7      7             8        3
-##     Si               6         6      4             7        9
-## M   No               5         2      6             7        4
-##     Si               6         2      3             1        5</code></pre>
+## H   No               3         5      0             4       10
+##     Si               9         9      6             2        2
+## M   No               7         4      6             6        5
+##     Si               6         2      2             5        7</code></pre>
 <pre class="r"><code>ftable(sex, ans, place, col.vars = c(&quot;sex&quot;, &quot;ans&quot;))</code></pre>
 <pre><code>##               sex  H     M   
 ##               ans No Si No Si
 ## place                        
-## Asturias           2  6  5  6
-## Barcelona          7  6  2  2
-## Cobija             7  4  6  3
-## San Francisco      8  7  7  1
-## Valencia           3  9  4  5</code></pre>
+## Asturias           3  9  7  6
+## Barcelona          5  9  4  2
+## Cobija             0  6  6  2
+## San Francisco      4  2  6  5
+## Valencia          10  2  5  7</code></pre>
 </div>
 <div id="filtrar-las-tablas" class="section level3">
 <h3>Filtrar las tablas</h3>
 <pre class="r"><code>table(sex, ans, place)[&quot;M&quot;, &quot;Si&quot;, &quot;San Francisco&quot;]</code></pre>
-<pre><code>## [1] 1</code></pre>
+<pre><code>## [1] 5</code></pre>
 <pre class="r"><code>table(sex, ans, place)[, &quot;Si&quot;, &quot;Valencia&quot;]</code></pre>
 <pre><code>## H M 
-## 9 5</code></pre>
+## 2 7</code></pre>
 <pre class="r"><code>table(sex, ans, place)[, &quot;No&quot;, ]</code></pre>
 <pre><code>##    place
 ## sex Asturias Barcelona Cobija San Francisco Valencia
-##   H        2         7      7             8        3
-##   M        5         2      6             7        4</code></pre>
+##   H        3         5      0             4       10
+##   M        7         4      6             6        5</code></pre>
 <pre class="r"><code>table(sex, ans, place)[&quot;M&quot;, , &quot;Cobija&quot;]</code></pre>
 <pre><code>## No Si 
-##  6  3</code></pre>
+##  6  2</code></pre>
 </div>
 <div id="frecuencias-relativas" class="section level3">
 <h3>Frecuencias relativas</h3>
@@ -452,113 +452,113 @@ table(sex, ans, place)</code></pre>
 ## 
 ##    ans
 ## sex   No   Si
-##   H 0.02 0.06
-##   M 0.05 0.06
+##   H 0.03 0.09
+##   M 0.07 0.06
 ## 
 ## , , place = Barcelona
 ## 
 ##    ans
 ## sex   No   Si
-##   H 0.07 0.06
-##   M 0.02 0.02
+##   H 0.05 0.09
+##   M 0.04 0.02
 ## 
 ## , , place = Cobija
 ## 
 ##    ans
 ## sex   No   Si
-##   H 0.07 0.04
-##   M 0.06 0.03
+##   H 0.00 0.06
+##   M 0.06 0.02
 ## 
 ## , , place = San Francisco
 ## 
 ##    ans
 ## sex   No   Si
-##   H 0.08 0.07
-##   M 0.07 0.01
+##   H 0.04 0.02
+##   M 0.06 0.05
 ## 
 ## , , place = Valencia
 ## 
 ##    ans
 ## sex   No   Si
-##   H 0.03 0.09
-##   M 0.04 0.05</code></pre>
+##   H 0.10 0.02
+##   M 0.05 0.07</code></pre>
 <pre class="r"><code>prop.table(table(sex, ans, place), margin = 3) # Frec. Rel. Marginal por ciudad</code></pre>
 <pre><code>## , , place = Asturias
 ## 
 ##    ans
 ## sex         No         Si
-##   H 0.10526316 0.31578947
-##   M 0.26315789 0.31578947
+##   H 0.12000000 0.36000000
+##   M 0.28000000 0.24000000
 ## 
 ## , , place = Barcelona
 ## 
 ##    ans
 ## sex         No         Si
-##   H 0.41176471 0.35294118
-##   M 0.11764706 0.11764706
+##   H 0.25000000 0.45000000
+##   M 0.20000000 0.10000000
 ## 
 ## , , place = Cobija
 ## 
 ##    ans
 ## sex         No         Si
-##   H 0.35000000 0.20000000
-##   M 0.30000000 0.15000000
+##   H 0.00000000 0.42857143
+##   M 0.42857143 0.14285714
 ## 
 ## , , place = San Francisco
 ## 
 ##    ans
 ## sex         No         Si
-##   H 0.34782609 0.30434783
-##   M 0.30434783 0.04347826
+##   H 0.23529412 0.11764706
+##   M 0.35294118 0.29411765
 ## 
 ## , , place = Valencia
 ## 
 ##    ans
 ## sex         No         Si
-##   H 0.14285714 0.42857143
-##   M 0.19047619 0.23809524</code></pre>
+##   H 0.41666667 0.08333333
+##   M 0.20833333 0.29166667</code></pre>
 <pre class="r"><code>prop.table(table(sex, ans, place), margin = c(1, 3)) # Frec. Rel. Marginal por sexo y ciudad</code></pre>
 <pre><code>## , , place = Asturias
 ## 
 ##    ans
 ## sex        No        Si
 ##   H 0.2500000 0.7500000
-##   M 0.4545455 0.5454545
+##   M 0.5384615 0.4615385
 ## 
 ## , , place = Barcelona
 ## 
 ##    ans
 ## sex        No        Si
-##   H 0.5384615 0.4615385
-##   M 0.5000000 0.5000000
+##   H 0.3571429 0.6428571
+##   M 0.6666667 0.3333333
 ## 
 ## , , place = Cobija
 ## 
 ##    ans
 ## sex        No        Si
-##   H 0.6363636 0.3636364
-##   M 0.6666667 0.3333333
+##   H 0.0000000 1.0000000
+##   M 0.7500000 0.2500000
 ## 
 ## , , place = San Francisco
 ## 
 ##    ans
 ## sex        No        Si
-##   H 0.5333333 0.4666667
-##   M 0.8750000 0.1250000
+##   H 0.6666667 0.3333333
+##   M 0.5454545 0.4545455
 ## 
 ## , , place = Valencia
 ## 
 ##    ans
 ## sex        No        Si
-##   H 0.2500000 0.7500000
-##   M 0.4444444 0.5555556</code></pre>
+##   H 0.8333333 0.1666667
+##   M 0.4166667 0.5833333</code></pre>
 <pre class="r"><code>ftable(prop.table(table(sex, ans, place)))</code></pre>
 <pre><code>##         place Asturias Barcelona Cobija San Francisco Valencia
 ## sex ans                                                       
-## H   No            0.02      0.07   0.07          0.08     0.03
-##     Si            0.06      0.06   0.04          0.07     0.09
-## M   No            0.05      0.02   0.06          0.07     0.04
-##     Si            0.06      0.02   0.03          0.01     0.05</code></pre>
+## H   No            0.03      0.05   0.00          0.04     0.10
+##     Si            0.09      0.09   0.06          0.02     0.02
+## M   No            0.07      0.04   0.06          0.06     0.05
+##     Si            0.06      0.02   0.02          0.05     0.07</code></pre>
 </div>
 </div>
 

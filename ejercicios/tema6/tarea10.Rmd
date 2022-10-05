@@ -1,7 +1,7 @@
 ---
 title: "Tarea 10 - Estudio de Bebés Recién Nacidos"
 author: "Jesus Mudarra Luján"
-date: '2022-09-24'
+date: "`r Sys.Date()`"
 output: pdf_document
 ---
 
@@ -33,25 +33,25 @@ help(birthwt)
 
 Variables del dataset `birthwt`:
 
-- low: indicador de peso al nacer inferior a 2,5 kg.
+- `low`: indicador de peso al nacer inferior a 2,5 kg.
 
-- age: edad de la madre en años.
+- `age`: edad de la madre en años.
 
-- lwt: peso de la madre en libras en la última menstruación.
+- `lwt`: peso de la madre en libras en la última menstruación.
 
-- race: raza de la madre (1 = blanca, 2 = negra, 3 = otra).
+- `race`: raza de la madre (1 = blanca, 2 = negra, 3 = otra).
 
-- smoke: condición de fumadora durante el embarazo.
+- `smoke`: condición de fumadora durante el embarazo.
 
-- ptl: número de partos prematuros anteriores.
+- `ptl`: número de partos prematuros anteriores.
 
-- ht: antecedentes de hipertensión.
+- `ht`: antecedentes de hipertensión.
 
-- ui: presencia de irritabilidad uterina.
+- `ui`: presencia de irritabilidad uterina.
 
-- ftv: número de visitas al médico durante el primer trimestre.
+- `ftv`: número de visitas al médico durante el primer trimestre.
 
-- bwt: peso al nacer en gramos.
+- `bwt`: peso al nacer en gramos.
 
 ## Pregunta 2
 
@@ -59,71 +59,119 @@ Calcula una tabla de frecuencias relativas marginales de los pares raza de la ma
 
 ```{r}
 x <- table(birthwt$race, birthwt$low)
-prop.table(x, margin = 1)
+
+dimnames(x) = list(
+  Raza = c("Blanca", "Negra", "Otra"),
+  Peso = c(">= 2.5 kg", "< 2.5 kg")
+)
+
+round(prop.table(x, margin = 1), 3)
 ```
 
 ## Pregunta 3
 
 Dibuja un diagrama de mosaico de la tabla del ejercicio anterior.
 
-
-
-
-
-
-
+```{r, fig.height=3.5, fig.width=5.5}
+mosaicplot(prop.table(x, margin = 1),
+           main = "Gráfico de mosaico de las variables race y low",
+           col = c("aquamarine3", "cadetblue4"))
+```
 
 ## Pregunta 4
 
 Dibuja un diagrama bidimensional de barras, con las barras organizadas en bloques, que permita visualizar la información de los ejercicios anteriores. Aprovecha para poner nombres adecuados a los bloques, colores a las barras y añadir una leyenda que explique qué representa cada barra.
 
-
-
-
-
-
-
+```{r}
+barplot(prop.table(x, margin = 1), ylim = c(0, 0.8), beside = TRUE,
+        main = "Frecuencias relativas de la raza de la madre\n para cada peso",
+        names = c(">=2.5 kg", "< 2.5 kg"),
+        col = c("cadetblue4", "gold3", "darkorchid4"),
+        legend.text = c("Blanca", "Negra", "Otra"))
+```
 
 ## Pregunta 5
 
 ¿Se puede obtener alguna conclusión de la tabla y el diagrama de barras anterior? Argumenta tu respuesta.
 
+Los bebés nacidos con $\geq$ 2.5 kg son más frecuentes que los bebés nacidos con < 2.5 kg. Los bebés nacidos con $\geq$ 2.5 kg son mayoritariamente de raza blanca mientras que los bebés nacidos con < 2.5 kg son la minoría.
 
-
-
-
-
+\newpage
 
 ## Pregunta 6
 
 Repite los cuatro ejercicios anteriores para los pares madre fumadora o no, peso inferior a 2.5 kg o no y para los pares madre hipertensa o no y peso inferior a 2.5 kg o no.
 
+```{r}
+x <- table(birthwt$smoke, birthwt$low)
 
+dimnames(x) = list(
+  Fumadora = c("No fumadora", "fumadora"),
+  Peso = c(">= 2.5 kg", "< 2.5 kg")
+)
 
+round(prop.table(x, margin = 1), 3)
 
+mosaicplot(prop.table(x, margin = 1),
+           main = "Gráfico de mosaico de las variables smoke y low",
+           col = c("aquamarine3", "cadetblue4"))
 
+barplot(prop.table(x, margin = 1), ylim = c(0, 0.8), beside = TRUE,
+        main = "Frecuencias relativas de madres fumadoras\n para cada peso",
+        names = c(">=2.5 kg", "< 2.5 kg"),
+        col = c("cadetblue4", "gold3"),
+        legend.text = c("No fumadora", "Fumadora"))
+```
 
+Si el bebé nace con un peso $\geq$ 2.5 kg es más probable que la mujer sea no fumadora. Por otro lado, si el bebé nace con un peso < 2.5 kg es más probable que la madre sea fumadora.
+
+```{r, fig.height=3.5, fig.width=5.5}
+x <- table(birthwt$ht, birthwt$low)
+
+dimnames(x) = list(
+  Hipertensa = c("No hipertensa", "Hipertensa"),
+  Peso = c(">= 2.5 kg", "< 2.5 kg")
+)
+
+round(prop.table(x, margin = 1), 3)
+
+mosaicplot(prop.table(x, margin = 1),
+           main = "Gráfico de mosaico de las variables ht y low",
+           col = c("aquamarine3", "cadetblue4"))
+
+barplot(prop.table(x, margin = 1), ylim = c(0, 0.8), beside = TRUE,
+        main = "Frecuencias relativas de madres hipertensas\n para cada peso",
+        names = c(">=2.5 kg", "< 2.5 kg"),
+        col = c("cadetblue4", "gold3"),
+        legend.text = c("No hipertensa", "Hipertensa"))
+```
+
+Si la madre no es hipertensa es más probable que el bebé nazca con un peso $\geq$ 2.5 kg. En cambio, si la mujer es hipertensa, es más probable que el bebé nazca con un peso < 2.5 kg.
 
 ## Pregunta 7
 
 Calcula una tabla de frecuencias relativas marginales de la terna raza de la madre, madre fumadora o no y peso inferior a 2.5 kg o no, que permita ver si la raza de la madre y su condición de fumadora o no fumadora influyen en el peso del bebé.
 
+```{r}
+x <- table(birthwt$smoke, birthwt$low, birthwt$race)
 
+dimnames(x) = list(
+  Fumadora = c("No fumadora", "Fumadora"),
+  Peso = c(">= 2.5 kg", "< 2.5 kg"),
+  Raza = c("Blanca", "Negra", "Otra")
+)
 
+round(prop.table(x, margin = c(1, 3)), 3)
+```
 
-
-
+\newpage
 
 ## Pregunta 8
 
 Dibuja un diagrama de mosaico de la tabla del ejercicio anterior.
 
-
-
-
-
-
-
-
-
-
+```{r}
+mosaicplot(prop.table(x, margin = c(1, 3)),
+           main = "Gráfico de mosaico de las variables smoke, low y race",
+           col = c("aquamarine3", "cadetblue4", "darkslategray"))
+```
