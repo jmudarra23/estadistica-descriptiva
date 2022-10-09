@@ -1,0 +1,36 @@
+---
+title: "Vuelos de NYC"
+author: "Jesus Mudarra Luján"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+Sys.setenv(RETICULATE_PYTHON = "C:/Users/mudar/anaconda3/envs/r-basic")
+library(reticulate)
+```
+
+## Vuelos de NYC
+
+```{r}
+data <- nycflights13::flights
+head(data)
+nrow(data)
+summary(data)
+```
+
+```{python}
+pydata = r.data
+pydata = pydata[pydata["dest"]=="ORD"]
+pydata = pydata[["carrier", "dep_delay", "arr_delay", "origin"]]
+pydata = pydata[pydata["arr_delay"] < 6*60]
+pydata = pydata.dropna()
+print(pydata.head())
+print(pydata.shape)
+```
+
+```{r}
+summary(py$pydata)
+boxplot(arr_delay ~ origin, data = py$pydata, main = "Retraso de los vuelos hacia Orlando desde NYC")
+```

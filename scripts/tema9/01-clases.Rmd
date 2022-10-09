@@ -58,14 +58,3 @@ La tabla de frecuencias de la longitud de los pétalos de *Iris* es:
 TablaFrecs(petals, k = 6, A = 1, p = 0.1)
 TablaFrecs.L(petals, L = c(1, 3, 4, 5, 5.5, 6, 6.5, 7), V = FALSE)
 ```
-
-
-
-
-
-
-
-
-
-
-
