@@ -1,0 +1,66 @@
+---
+title: "Distribución Binomial"
+author: "Jesus Mudarra Luján"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Función de densidad
+
+Sea $X = B(n = 30, p = 0.6)$,
+
+TODO: escribir la función de densidad y la función de distribución acumulada.
+
+### En `R`
+
+```{r}
+n = 30
+p = 0.6
+plot(0:n, dbinom(0:n, size = n, prob = p))
+plot(0:n, pbinom(0:n, size = n, prob = p))
+qbinom(0.5, size = n, prob = p)
+qbinom(0.25, size = n, prob = p)
+hist(rbinom(100000, size = n, prob = p), breaks = 0:30)
+```
+
+### En `Python`
+
+```{python}
+from scipy.stats import binom
+import matplotlib.pyplot as plt
+import numpy as np
+
+fig, ax = plt.subplots(1, 1)
+
+n = 7
+p = 0.4
+
+mean, var, skew, kurt = binom.stats(n, p, moments="mvsk")
+
+print("Media = {}".format(mean))
+print("Varianza = {}".format(var))
+print("Sesgo = {}".format(skew))
+print("Curtosis = {}".format(kurt))
+
+x = np.arange(0, n+1)
+ax.plot(x, binom.pmf(x, n, p), "bo", ms=8, label="Función de densidad de B(7, 0.4)")
+ax.vlines(x, 0, binom.pmf(x, n, p), colors="b", lw=4, alpha=0.5)
+
+rv = binom(n, p)
+ax.vlines(x, 0, rv.pmf(x), colors="k", linestyles="--", lw=1, label="Distribución teórica")
+ax.legend(loc="upper right", frameon=True)
+
+plt.show()
+
+fig, ax = plt.subplots(1, 1)
+r = binom.rvs(n, p, size=10000)
+ax.hist(r, bins=n)
+
+plt.show()
+
+print(r)
+```

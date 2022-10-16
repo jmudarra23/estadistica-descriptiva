@@ -1,0 +1,63 @@
+---
+title: "Distribución Uniforme"
+author: "Jesus Mudarra Luján"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Distribución Uniforme
+
+Supongamos que $X\sim U([0, 1])$ entonces podemos estudiar sus parámetros
+
+### En `R`
+
+```{r}
+a = 0
+b = 1
+
+x = seq(-0.1, 1.1, 0.1)
+
+plot(dunif(x, min = a, max = b))
+plot(punif(x, min = a, max = b), type = "l")
+qunif(0.25, a, b)
+runif(1000000, a, b) -> data
+hist(data)
+```
+
+### En `Python`
+
+```{python}
+from scipy.stats import uniform
+import matplotlib.pyplot as plt
+import numpy as np
+
+a = 0
+b = 1
+
+loc = a
+scale = b-a
+
+rv = uniform(loc=loc, scale=scale)
+
+fig, ax = plt.subplots(1, 1)
+mean, var, skew, kurt = rv.stats(moments="mvsk")
+
+print("Media = {}".format(mean))
+print("Varianza = {}".format(var))
+print("Sesgo = {}".format(skew))
+print("Curtosis = {}".format(kurt))
+
+x = np.linspace(-0.1, 1.1, 120)
+ax.plot(x, rv.pdf(x), "k-", lw=2, label="U(0,1)")
+
+r = rv.rvs(size=100000)
+ax.hist(r, density = True, histtype = "stepfilled", alpha = 0.25)
+
+ax.legend(loc="best", frameon=False)
+
+plt.show()
+```

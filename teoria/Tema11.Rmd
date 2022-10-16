@@ -241,7 +241,7 @@ donde $p$ es la probabilidad de éxito y $q = 1-p$ es la probabilidad de fracaso
 
 El código de la distribución de Beroulli:
 
-- En `R` tenemos las funciones del paquete `Rlab`: `dbenr(x,prob), pbenr(q,prob), qbenr(p,prob), rbenr(n, prob)` donde `prob` es la probabilidad de éxito.
+- En `R` tenemos las funciones del paquete `Rlab`: `dbern(x,prob), pbern(q,prob), qbern(p,prob), rbern(n, prob)` donde `prob` es la probabilidad de éxito.
 - En `Python` tenemos las funciones del paquete `scipy.stats.bernoulli`: `pmf(k,p), cdf(k,p), ppf(q,p), rvs(p, size)` donde `p` es la probabilidad de éxito.
 
 ## Distribución Binomial
@@ -554,7 +554,7 @@ par(mfrow=c(1,1))
 
 El código de la distribución Uniforme:
 
-- En `R` tenemos las funciones del paquete `stats`: `dunif(x, min, max), punif(q, min, max), qunif(p, min, max), runif(n,  min, max)` donde `min` y `max` són los extremos de los intervalos de la distribución uniforme.
+- En `R` tenemos las funciones del paquete `stats`: `dunif(x, min, max), punif(q, min, max), qunif(p, min, max), runif(n,  min, max)` donde `min` y `max` son los extremos de los intervalos de la distribución uniforme.
 - En `Python` tenemos las funciones del paquete `scipy.stats.uniform`: `pdf(k,loc, scale), cdf(k,loc, scale), ppf(q,loc, scale), rvs(n,loc, scaler)` donde la distribución uniforme está definida en el intervalo `[loc, loc+scale]`.
 
 ## Distribución Exponencial
@@ -599,7 +599,7 @@ par(mfrow = c(1,1))
 El código de la distribución Exponencial:
 
 - En `R` tenemos las funciones del paquete `stats`: `dexp(x, rate), pexp(q, rate), qexp(p, rate), rexp(n,  rate)` donde `rate`$=\lambda$ es el tiempo entre dos sucesos consecutivos de la distribución.
-- En `Python` tenemos las funciones del paquete `scipy.stats.expon`: `pdf(k, scale), cdf(k, scale), ppf(q, scale), rvs(n, scaler)` donde `scale`$=1/\lambda$ es la inversa del tiempo entre dos sucesos consecutivos de la distribución.
+- En `Python` tenemos las funciones del paquete `scipy.stats.norm`: `pdf(k, scale), cdf(k, scale), ppf(q, scale), rvs(n, scaler)` donde `scale`$=1/\lambda$ es la inversa del tiempo entre dos sucesos consecutivos de la distribución.
 
 
 ## Distribución Normal
@@ -616,7 +616,7 @@ $$f_Z(z)=\frac{1}{\sqrt{2\pi}}e^{-\frac{z^2}{2}}\quad \forall z\in\mathbb{R}$$
 - **Esperanza** $E(X) = \mu$
 - **Varianza** $Var(X) = \sigma^2$
 
-En particualr, si $Z$ sigue una distribución estándar,
+En particular, si $Z$ sigue una distribución estándar,
 
 - **Esperanza** $E(X) = 0$
 - **Varianza** $Var(X) = 1$

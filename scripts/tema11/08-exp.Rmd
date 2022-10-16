@@ -1,0 +1,40 @@
+---
+title: "Distribución exponencial"
+author: "Jesus Mudarra Luján"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## En `Python`
+
+```{python}
+from scipy.stats import expon
+import numpy as np
+import matplotlib.pyplot as plt
+
+fig, ax = plt.subplots(1, 1)
+
+lam = 3
+rv = expon(scale = 1/lam)
+
+mean, var, skew, kurt = rv.stats(moments="mvsk")
+
+print("Media = {}".format(mean))
+print("Varianza = {}".format(var))
+print("Sesgo = {}".format(skew))
+print("Curtosis = {}".format(kurt))
+
+x = np.linspace(0, 3, 1000)
+ax.plot(x, rv.pdf(x), "r-", lw=5, alpha=0.6, label="Exp(10)")
+
+r = rv.rvs(size=100000)
+ax.hist(r, density=True, histtype="stepfilled", alpha=0.2)
+
+ax.legend(loc="best", frameon=False)
+
+plt.show()
+```
