@@ -1,0 +1,166 @@
+---
+title: "Tarea 15 - Repasando Distribuciones de Probabilidad"
+author: "Jesus Mudarra Luján"
+date: "`r Sys.Date()`"
+output: pdf_document
+header-includes:
+- \definecolor{shadecolor}{RGB}{235,235,235}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Pregunta 1
+
+En una universidad, se sabe que el 25% de los alumnos realizan algún tipo de deporte. Se ha obtenido una muestra de 30 alumnos.
+
+a) Si llamamos X a la variable aleatoria que cuenta el número de alumnos que realizan algún tipo de deporte, ¿qué tipo de distribución sigue X?
+
+  X sigue una distribución Binomial $X \sim B(30, 0.25)$.
+
+b) ¿Qué esperanza tiene X?
+
+  La esperanza será $E(X) = np = 30 \cdot 0.25 = 7.5$.
+
+c) ¿Y varianza?
+
+  La varianza será $Var(X) = npq = 30 \cdot 0.25 \cdot 0.75 = 5.625$.
+
+d) Calcula con `R` (o `Python`) la probabilidad de que más de 25 alumnos practiquen algún deporte.
+
+  $P(X > 25)$ =
+
+```{r}
+1 - pbinom(25, 30, 0.25)
+```
+
+e) Calcula con `R` (o `Python`) la probabilidad de que exactamente 15 alumnos practiquen algún deporte.
+
+  $P(X = 15)$ =
+
+```{r}
+1 - pbinom(15, 30, 0.25)
+```
+
+f) Calcula con `R` (o `Python`) la probabilidad de que de 10 alumnos o menos practiquen algún deporte.
+
+  $P(X \leq 10)$ =
+
+```{r}
+1 - pbinom(10, 30, 0.25)
+```
+
+## Pregunta 2
+
+El número medio de accidentes de coche en la ciudad de Mahón en 2 meses es de 2 accidentes.
+
+a) ¿Qué distribución sigue la v.a. que cuenta el número de accidentes en 2 meses?
+
+  Se trata de una distribución de Poisson $X \sim Po(2)$.
+
+b) Calcula la esperanza
+
+  La esperanza será $E(X) = \lambda = 2$.
+
+c) Calcula con `R` (o `Python`) la probabilidad de que no ocurra ningún accidente en 2 meses.
+
+$P(X = 0)$ =
+
+```{r}
+dpois(0, 2)
+```
+
+## Pregunta 3
+
+El 40% de un pueblo a las afueras de la ciudad de Pensilvania ve un concurso que dan por la tele. El concurso llama por teléfono a 15 personas del pueblo elegidas al azar. ¿De qué distribución se trata?
+
+Se trata de una distribución Binomial $X \sim B(15, 0.4)$.
+
+## Pregunta 4
+
+En un bol muy grande tenemos, en total, 70 fresas, de entre las cuales 10 están podridas. Tomando un puñado de 20 fresas al azar y sin reemplazar ninguna de ellas, ¿qué distribución sigue la v.a. que cuenta el número de fresas podridas?
+
+Da también la esperanza y la varianza de esta variable aleatoria.
+
+Se trata de una distribución Hipergeométrica $X \sim H(10, 60, 20)$.
+
+La esperanza será $E(X) = \frac{nN}{N+M} = \frac{20 \cdot 10}{10+60} = 2.857143$.
+
+La varianza será $Var(X) = \frac{nNM}{(N+M)^2} \cdot \frac{N+M-n}{N+M-1} = \frac{20 \cdot10\cdot60}{(60+10)^2} \cdot \frac{60+10-20}{60+10-1} = 1.7746229$.
+
+## Pregunta 5
+
+Un test de matemáticas consta de 200 preguntas de verdadero o falso. Para una persona que respondiese al azar, ¿qué distribución seguiría la v.a. que cuenta el número de preguntas acertadas?
+
+Da también la esperanza y la varianza de esta variable aleatoria.
+
+Se trata de una distribución Binomial $X \sim B(200, 0.5)$.
+
+La esperanza será $E(X) = np = 200 \cdot 0.5 = 100$.
+
+La varianza será $Var(X) = npq = 200 \cdot 0.5 \cdot 0.5 = 50$.
+
+## Pregunta 6
+
+Un test de matemáticas consta de 200 preguntas. Cada pregunta consta de 4 posibles respuestas con solo una correcta. Para una persona que respondiese al azar, ¿qué distribución seguiría la v.a. que cuenta el número de preguntas acertadas?
+
+Da también la esperanza y la varianza de esta variable aleatoria.
+
+Se trata de una distribución Binomial $X \sim B(200, 0.25)$.
+
+La esperanza será $E(X) = np = 200 \cdot 0.25 = 50$.
+
+La varianza será $Var(X) = npq = 200 \cdot 0.25 \cdot 0.75 = 37.5$.
+
+## Pregunta 7
+
+Un test de matemáticas consta de 200 preguntas de verdadero o falso. Para una persona que respondiese al azar y por orden, ¿qué distribución seguiría la v.a. que cuenta el número de preguntas respondidas hasta el primer acierto?
+
+Da también la esperanza y la varianza de esta variable aleatoria.
+
+Se trata de una distribución Geométrica $X \sim Ge(0.5)$.
+
+La esperanza será $E(X) = \frac{1-p}{p} = \frac{1-0.5}{0.5} = 1$.
+
+La varianza será $Var(X) = \frac{1-p}{p^2} = \frac{1-0.5}{0.5^2} = 2$.
+
+## Pregunta 8
+
+Para evitar ser arrestado al pasar el control de seguridad, un viajero ha colocado 7 pastillas de droga en una botella que contiene 14 píldoras de vitaminas, las cuales son muy similares a las otras. Si el policía de turno selecciona 4 pastillas aleatoriamente para analizarlas, ¿qué distribución sigue la v.a. que cuenta el número de pastillas de droga?
+
+Se trata de una distribución Hipergeométrica $X \sim H(7, 14, 4)$.
+
+## Pregunta 9
+
+Un servicio dedicado a la reparación de aires acondicionados recibe de media 27 llamadas diarias. ¿Qué distribución sigue la v.a. que cuenta el número de llamadas diarias?
+
+Se trata de una distribución de Poisson $X \sim Po(27)$.
+
+## Pregunta 10
+
+Se lanza 53 veces un dado. ¿Qué distribución sigue la v.a. que cuenta cuántas veces ha salido un número impar? ¿Y la v.a. que cuenta el número de veces que ha salido un número par? ¿Y la v.a. que cuenta las veces que hemos obtenido exactamente el número 5?
+
+* Veces que ha salido impar: Distribución Binomial $X \sim B(53, 0.5)$.
+
+* Veces que ha salido par: Distribución Binomial $X \sim B(53, 0.5)$.
+
+* Veces que se ha obtenido el número 5: Distribución Binomial $X \sim B(53, 0.1666667)$.
+
+## Pregunta 11
+
+El precio medio del litro de gasolina durante el próximo año se estima que puede oscilar entre 1.09€ y 2.53€. ¿De qué distribución de probabilidad se trata?
+
+Se trata de una distribución Uniforme $X \sim U(1.09, 2.53)$.
+
+## Pregunta 12
+
+En una tienda del centro comercial, el tiempo medio de cola para poder pagar en caja es de 7 minutos. ¿De qué distribución de probabilidad se trata?
+
+Da la esperanza y varianza.
+
+Se trata de una distribución Exponencial $X \sim Exp(7)$.
+
+La esperanza será $E(X) = \frac{1}{\lambda} = \frac{1}{7} = 0.1428571$.
+
+La varianza será $Var(X) = \frac{1}{\lambda^2} = \frac{1}{7^2} = 0.02040816$.
